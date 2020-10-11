@@ -1,0 +1,357 @@
+digraph PathofDnD{
+  node [penwidth = 1.0, fontsize =8, style = "filled",
+  fillcolor = "#ffffff", color = "0.72,0.4,0.9",
+  shape = "doubleoctagon", fontname = "Arial"];
+  graph [root = "human", overlap = "false", bgcolor = "0.72,0.4,0.3";];
+  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9"];
+
+
+  "human" [fontsize = 16, penwidth = 2];
+
+
+  subgraph Barbarian{
+
+  node [style = "filled" fillcolor = "#fff9c0";]
+  //class Skills
+    //1
+      bb_rage_1[label = "rage +1"];
+       "unarmored defense" "+6hp";
+    //2
+      "reckless attack" "danger sense"
+    //3
+      "frenzy" "spirit seeker" "totem spirit"
+  //proficiencies
+    "light armor" "shield" "save: Con" "save: Str" "skill choice"
+    bb_skill_1[label = "choose skill"];
+    bb_e_survival[label = "expertise: survival"];
+
+    bb_con_1 [label="+1 CON"];
+
+    bb_hp_con_1 [label = "+[CON]hp"]
+    bb_hp_con_2 [label = "+[CON]hp"]
+    bb_hp_con_3 [label = "+[CON]hp"]
+    bb_hp_con_4 [label = "+[CON]hp"]
+    bb_hp4_1 [label = "+4hp"]
+    bb_hp4_2 [label = "+4hp"]
+
+    subgraph bb_minor{
+    node [penwidth = 0.1, shape = "ellipse"];
+    //proficiencies
+      "club" "greatclub"  "battleaxe" "maul"
+      bb_p_survival[label = "proficiency: survival"];
+      bb_p_intimidation[label = "proficiency: intimidation"]
+
+      bb_advantage_intimidation [label = "while raging: advantage: intimidation"]
+
+    //boni
+      bb_str_1 [label="+1 STR"];
+      bb_rd_1 [label="+1 rage damage"]
+      bb_rd_2 [label="+1 rage damage"]
+      bb_hp_1 [label="+1hp"]
+      bb_hp_2 [label="+1hp"]
+      bb_hp_3 [label="+1hp"]
+      bb_hp_4 [label="+1hp"]
+      bb_hp_5 [label="+1hp"]
+      bb_hp2_1 [label = "+2hp"]
+      bb_hp2_2 [label = "+2hp"]
+      bb_hp2_3 [label = "+2hp"]
+
+      bb_damageredux_slashing_1 [label = "-2 slashing damage taken"]
+      bb_damageinc_bludgeoning_1 [label = "+1 bludgeoning damage"]
+      bb_critinc_damage_bludgeoning [label = "+1d6 bludgeoning critical damage"]
+
+    }
+
+  //edges
+    human-> "club" -> "greatclub" -> "unarmored defense" ;
+
+    "save: Str" -> bb_skill_1;
+
+    "unarmored defense" -> "save: Str";
+    "unarmored defense" -> bb_str_1 -> "+6hp";
+    "unarmored defense" -> "maul" ->bb_rage_1
+    "unarmored defense" -> "battleaxe" -> "shield";
+    "unarmored defense" -> bb_p_survival -> bb_e_survival;
+
+    bb_rage_1 -> bb_rd_2 -> "reckless attack";
+    bb_rage_1 -> bb_rd_1;
+    bb_rage_1 -> bb_hp_con_4;
+
+    bb_hp_con_4 -> bb_hp4_2;
+
+    "shield" ->  "light armor";
+    "shield" -> "danger sense";
+
+    "+6hp" -> bb_hp_5 -> "reckless attack";
+    "+6hp" -> bb_hp_con_1;
+    "+6hp" -> "skill choice";
+
+    bb_hp_con_1 -> "danger sense";
+
+    "reckless attack" -> bb_hp_1 -> "frenzy";
+    "reckless attack" -> bb_hp_3 -> bb_con_1;
+    "reckless attack" -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning;
+
+    "danger sense" -> bb_hp_2 -> "totem spirit";
+    "danger sense" -> bb_hp_4 -> bb_con_1;
+    "danger sense" ->bb_hp2_1 -> bb_hp_con_2;
+
+    bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
+
+    bb_con_1 -> "save: Con"
+    bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
+
+    "totem spirit" -> "spirit seeker";
+
+    "frenzy" -> bb_p_intimidation ->bb_advantage_intimidation;
+  }
+
+  subgraph druid{
+    node [style = "filled" fillcolor = "#c0ffc0";]
+    //class Skills
+      "druidic" "+2hp" "circle spells" "combat wild shape"
+
+      "Feature: Wanderer"
+
+      dr_recovery_1[label = "Natural recovery +1"];
+
+      dr_s_int [label = "save INT"];
+      dr_s_wis [label = "save WIS"];
+      dr_e_nature [label = "expertise: nature"];
+
+      dr_ss_l1_1[label = "level 1 spellslot"];
+      dr_ss_l1_2[label = "level 1 spellslot"];
+      dr_ss_l1_3[label = "level 1 spellslot"];
+      dr_ss_l1_4[label = "level 1 spellslot"];
+      dr_ss_l1_5[label = "level 1 spellslot"];
+      dr_ss_l2_1[label = "level 2 spellslot"];
+      dr_ss_l2_2[label = "level 2 spellslot"];
+      dr_ss_l2_3[label = "level 2 spellslot"];
+
+      dr_ws_1[label = "wildshape CR +1"];
+      dr_ws_2[label = "wildshape CR +1"];
+      dr_ws_3[label = "wildshape CR +1"];
+
+    //proficiencies
+      dr_la [label = "prof: light armor"];
+      dr_sh [label= "prof: shield"];
+      dr_t_helrbalismkit [label = "prof: herbalism kit"];
+    subgraph dr_minor{
+      node [penwidth = 0.1, shape = "ellipse"];
+
+      dr_cantrip_1 [label = "choose cantrip"];
+      dr_cantrip_2[ label = "choose cantrip"];
+      dr_cantrip_3[ label = "choose cantrip"];
+
+      dr_skill_1 [label = "choose skill"];
+      dr_skill_2 [label = "choose skill"];
+      dr_p_nature [label = "proficiency: nature"];
+      dr_p_medicine [label = "proficiency: medicine"];
+      dr_p_arcana [label = "proficiency: arcana"];
+
+      dr_l_primordial [label = "language: primordial"]
+
+      dr_club [label="prof: club"];
+      dr_sickle [label="prof: sickle"];
+      dr_dart [label="prof: dart"];
+      dr_sling [label="prof: sling"];
+      dr_quarterstaff [label="prof: quarterstaff"];
+      dr_javelin [label="prof: javelin"];
+
+      dr_hp2_1 [label = "+2hp"];
+
+    }
+    //edges
+    human -> dr_sickle -> dr_t_helrbalismkit;
+
+    dr_t_helrbalismkit -> dr_la;
+    dr_t_helrbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
+    dr_t_helrbalismkit -> dr_p_medicine;
+
+    dr_e_nature -> dr_s_wis[arrowhead = empty];
+    dr_e_nature -> "Feature: Wanderer"[arrowhead = empty];
+
+    dr_la -> dr_sling -> "druidic";
+    dr_la -> dr_dart -> dr_ws_1;
+    dr_la -> dr_skill_2;
+
+    "druidic"  ->dr_ss_l1_1;
+    "druidic" -> dr_sh;
+    "druidic" -> dr_cantrip_2 -> dr_cantrip_3 -> dr_ss_l1_5;
+
+    dr_sh -> dr_hp2_1 -> dr_s_int;
+    dr_sh -> {dr_quarterstaff dr_javelin dr_club};
+
+    dr_ss_l1_5 -> dr_ss_l2_1;
+
+    dr_ss_l2_1 -> dr_p_arcana -> dr_l_primordial;
+
+    dr_ss_l1_1 -> dr_ss_l1_2[arrowhead = empty];
+    dr_ss_l1_1 -> dr_s_wis;
+
+    dr_ss_l1_2 -> dr_recovery_1;
+
+    dr_recovery_1 -> dr_ss_l1_5;
+    dr_recovery_1 -> "circle spells";
+
+    "circle spells" -> dr_ss_l2_3;
+
+    dr_ws_1 -> dr_sh;
+    dr_ws_1 -> dr_cantrip_1 -> dr_ss_l1_3;
+    dr_ws_1 -> "combat wild shape"
+
+    "combat wild shape" -> dr_ss_l1_4;
+
+    dr_ss_l1_4 -> dr_ws_2;
+
+    dr_ss_l1_3 -> dr_ws_2;
+
+    dr_ws_2 -> dr_ws_3;
+    dr_ws_2 -> dr_ss_l2_2;
+
+  }
+
+  subgraph paladin{
+    node [style = "filled" fillcolor = "#b0e0ff";]
+
+    "divine sense" "divine smite" "divine health"
+
+    pa_ma [label = "proficiency: medium armor"];
+    pa_ha [label = "proficiency: heavy armor"];
+    pa_sh [label = "proficiency: shield"];
+
+    pa_s_wis [label = "save WIS"];
+    pa_s_cha [label = "save CHA"];
+
+    pa_str_1 [label = "+1 STR"];
+
+    pa_layonh_1 [label = "lay on hands +5"];
+    pa_layonh_2 [label = "lay on hands +5"];
+    pa_layonh_3 [label = "lay on hands +5"];
+
+    pa_ss_l1_1 [label = "level 1 spellslot"];
+    pa_ss_l1_2 [label = "level 1 spellslot"];
+    pa_ss_l1_3 [label = "level 1 spellslot"];
+    pa_ss_l1_4 [label = "level 1 spellslot"];
+
+    pa_hp_base [label = "+4hp"];
+    pa_hp_con_1 [label = "+[CON]hp"];
+
+    pa_fightstyle [label = "choose fighting style"];
+
+    pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
+
+    subgraph pa_oath_ancient{
+      pa_an_spell_ensnaringstrike [label = "oath spell: ensnaring strike"];
+      pa_an_spell_speakwani [label = "oath spell: speak with animals"];
+
+    }
+
+    subgraph pa_oath_devotion{
+      pa_de_spell_pfromeng [label = "oath spell: protection from evil and good"];
+      pa_de_spell_sanctuary [label = "oath spell: sanctuary"];
+    }
+
+    subgraph pa_oath_vengance{
+    pa_ve_spell_huntersm [label = "oath spell: hunters mark"];
+    pa_ve_spell_bane [label = "oath spell: bane"];
+
+    }
+
+    subgraph pa_minor{
+      node [penwidth = 0.1, shape = "ellipse"];
+
+      pa_hp_1 [label = "+1hp"];
+      pa_hp2_1 [label = "+2hp"];
+      pa_hp2_2 [label = "+2hp"];
+      pa_hp2_3 [label = "+2hp"];
+      pa_hp2_4 [label = "+2hp"];
+
+      pa_skill_1 [label = "choose skill"];
+      pa_skill_2 [label = "choose skill"];
+
+      pa_p_animalhandling [label = "proficiency: animal handling"];
+
+      pa_morningstar [label = "proficiency: morningstar"];
+      pa_warhammer [label = "proficiency: warhammer"];
+      pa_glave [label = "proficiency: glaive"];
+      pa_mace [label= "proficiency: mace"];
+      pa_lance [label = "proficiency: lance"];
+
+      subgraph pa_an_minor{
+        pa_an_ten_kindle[label= "kindle the light"];
+        pa_an_ten_shelter[label= "shelter the light"];
+        pa_an_ten_preserve[label= "preserve the light"];
+        pa_an_ten_be[label= "be the light"];
+      }
+
+      subgraph pa_de_minor{
+        pa_de_ten_courage[label= "courage"];
+        pa_de_ten_honor[label= "honor"];
+        pa_de_ten_compassion[label= "compassion"];
+        pa_de_ten_duty[label= "duty"];
+      }
+
+      subgraph pa_ve_minor{
+        pa_ve_ten_fight;
+        pa_ve_ten_restitution;
+        pa_ve_ten_nomercy;
+        pa_ve_ten_anymeans;
+      }
+    }
+
+    //edges
+
+    human -> pa_mace-> pa_ma;
+
+    pa_ma ->"divine sense";
+    pa_ma -> pa_morningstar -> pa_warhammer -> pa_sh;
+
+    pa_sh -> pa_fightstyle;
+    pa_sh -> pa_str_1 -> pa_ha;
+    pa_sh -> pa_glave -> pa_lance ->pa_p_animalhandling;
+
+    "divine sense" -> pa_hp_base;
+    "divine sense" -> pa_s_cha;
+
+    pa_hp_base -> pa_hp2_4 -> pa_layonh_1;
+
+    pa_layonh_1 -> pa_s_wis;
+    pa_layonh_1 ->pa_skill_2;
+    pa_layonh_1 -> pa_ss_l1_4 -> pa_hand_less_somantic;
+
+    pa_s_wis -> pa_ss_l1_2;
+
+    pa_s_cha ->pa_ss_l1_3;
+
+    pa_ss_l1_3 -> pa_ss_l1_1[arrowhead = empty];
+    pa_ss_l1_3 -> pa_hp2_3;
+
+    pa_ss_l1_1 -> "divine smite";
+    pa_ss_l1_1 -> pa_ss_l1_2;
+
+    pa_fightstyle ->pa_hp_1 -> "divine smite";
+    pa_fightstyle -> pa_layonh_2;
+
+    pa_ss_l1_1 -> pa_hp_con_1;
+
+    pa_hp_con_1 -> pa_hp2_1 -> pa_hp2_2 ->"divine health";
+    pa_hp_con_1 ->  pa_an_ten_kindle -> pa_an_ten_shelter -> pa_an_spell_speakwani;
+    pa_hp_con_1 -> pa_an_ten_preserve -> pa_an_ten_be -> pa_an_spell_ensnaringstrike;
+    pa_hp_con_1 -> pa_de_ten_courage -> pa_de_ten_compassion -> pa_de_spell_pfromeng;
+    pa_hp_con_1 -> pa_de_ten_honor -> pa_de_ten_duty -> pa_de_spell_sanctuary;
+    pa_hp_con_1 -> pa_ve_ten_fight -> pa_ve_ten_restitution -> pa_ve_spell_bane;
+    pa_hp_con_1 -> pa_ve_ten_nomercy ->pa_ve_ten_anymeans -> pa_ve_spell_huntersm;
+
+    "divine health" ->pa_layonh_3;
+  }
+
+  //Barbarian -- Druid
+  bb_e_survival -> "Feature: Wanderer"
+
+  //Barbarian -- Paladin
+  bb_hp_con_3 -> pa_sh;
+
+  //Druid -- Paladin
+  pa_hp_base -> dr_p_medicine [arrowhead = "empty"];
+}
