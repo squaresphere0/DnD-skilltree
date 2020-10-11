@@ -1,0 +1,2 @@
+neato -Tsvg -Gstart=rand test.dot -o test.svg
+
