@@ -179,7 +179,7 @@ digraph PathofDnD{
 
     }
     //edges
-    human -> dr_sickle -> dr_t_helrbalismkit;
+    human -> dr_sickle;
     dr_sickle -> dr_hp2_5 -> dr_t_helrbalismkit;
 
     dr_t_helrbalismkit -> dr_la;
