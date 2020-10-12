@@ -1,9 +1,7 @@
 digraph PathofDnD{
-  node [penwidth = 1.0, fontsize =8, style = "filled",
-  fillcolor = "#ffffff", color = "0.72,0.4,0.9",
-  shape = "doubleoctagon", fontname = "Arial"];
+  node [penwidth = 1.0, fontsize =8, style = "filled", fillcolor = "#ffffff", color = "0.72,0.4,0.9", shape = "doubleoctagon", fontname = "Arial"];
   graph [root = "human", overlap = "false", bgcolor = "0.72,0.4,0.3";];
-  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9"];
+  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9", dir = "both", arrowtail = none];
 
 
   "human" [fontsize = 16, penwidth = 2];
@@ -340,7 +338,9 @@ digraph PathofDnD{
 
     pa_layonh_1 -> pa_s_wis;
     pa_layonh_1 ->pa_skill_2;
-    pa_layonh_1 -> pa_ss_l1_4 -> pa_hand_less_somantic;
+    pa_layonh_1 -> pa_ss_l1_4;
+
+    pa_ss_l1_4 -> pa_hand_less_somantic;
 
     pa_hand_less_somantic -> pa_ss_l1_5;
 
@@ -399,4 +399,5 @@ digraph PathofDnD{
   //Druid -- Paladin
   dr_p_medicine  -> pa_hp_base [arrowhead = "empty"];
   "combat wild shape" -> pa_ss_l1_5;
+
 }
