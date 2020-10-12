@@ -224,6 +224,8 @@ digraph PathofDnD{
     pa_s_cha [label = "save CHA"];
 
     pa_str_1 [label = "+1 STR"];
+    pa_str_2 [label = "+1 STR"];
+    pa_cha_1 [label = "+1 CHA"];
 
     pa_layonh_1 [label = "lay on hands +5"];
     pa_layonh_2 [label = "lay on hands +5"];
@@ -233,13 +235,23 @@ digraph PathofDnD{
     pa_ss_l1_2 [label = "level 1 spellslot"];
     pa_ss_l1_3 [label = "level 1 spellslot"];
     pa_ss_l1_4 [label = "level 1 spellslot"];
+    pa_ss_l1_5 [label = "level 1 spellslot"];
 
     pa_hp_base [label = "+4hp"];
     pa_hp_con_1 [label = "+[CON]hp"];
+    pa_hp_con_2 [label = "+[CON]hp"];
+    pa_hp4_1 [label = "+4hp"];
+    pa_hp4_2 [label = "+4hp"];
+    pa_hp4_3 [label = "+4hp"];
+    pa_hp4_4 [label = "+4hp"];
 
     pa_fightstyle [label = "choose fighting style"];
 
+    pa_feat_mounted [label = "feature: mounted combatant"];
+
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
+    pa_find_steed [label = "once a day: \nfind steed"];
+
 
     subgraph pa_oath_ancient{
       pa_an_spell_ensnaringstrike [label = "oath spell: ensnaring strike"];
@@ -266,6 +278,9 @@ digraph PathofDnD{
       pa_hp2_2 [label = "+2hp"];
       pa_hp2_3 [label = "+2hp"];
       pa_hp2_4 [label = "+2hp"];
+      pa_hp2_5 [label = "+2hp"];
+      pa_hp2_6 [label = "+2hp"];
+      pa_hp2_7 [label = "+2hp"];
 
       pa_skill_1 [label = "choose skill"];
       pa_skill_2 [label = "choose skill"];
@@ -277,6 +292,8 @@ digraph PathofDnD{
       pa_glave [label = "proficiency: glaive"];
       pa_mace [label= "proficiency: mace"];
       pa_lance [label = "proficiency: lance"];
+
+      pa_mount_shield [label = "shield AC bonus for mount"];
 
       subgraph pa_an_minor{
         pa_an_ten_kindle[label= "kindle the light"];
