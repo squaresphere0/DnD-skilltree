@@ -376,7 +376,7 @@ digraph PathofDnD{
   }
 
   //Barbarian -- Druid
-  bb_e_survival -> "Feature: Wanderer"
+  bb_e_survival -> dr_f_wanderer;
 
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
