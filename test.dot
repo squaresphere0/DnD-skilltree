@@ -104,36 +104,44 @@ digraph PathofDnD{
     "frenzy" -> bb_p_intimidation ->bb_advantage_intimidation;
   }
 
-  subgraph druid{
+  subgraph Druid{
     node [style = "filled" fillcolor = "#c0ffc0";]
     //class Skills
-      "druidic" "+2hp" "circle spells" "combat wild shape"
+      "druidic" "circle spells" "combat wild shape"
 
-      "Feature: Wanderer"
+      dr_f_wanderer [label = "Feature: Wanderer"];
 
-      dr_recovery_1[label = "Natural recovery +1"];
+      dr_recovery_1 [label = "Natural recovery +1"];
 
       dr_s_int [label = "save INT"];
       dr_s_wis [label = "save WIS"];
       dr_e_nature [label = "expertise: nature"];
 
-      dr_ss_l1_1[label = "level 1 spellslot"];
-      dr_ss_l1_2[label = "level 1 spellslot"];
-      dr_ss_l1_3[label = "level 1 spellslot"];
-      dr_ss_l1_4[label = "level 1 spellslot"];
-      dr_ss_l1_5[label = "level 1 spellslot"];
-      dr_ss_l2_1[label = "level 2 spellslot"];
-      dr_ss_l2_2[label = "level 2 spellslot"];
-      dr_ss_l2_3[label = "level 2 spellslot"];
+      dr_wis1_1 [label = "+1 Wis"];
 
-      dr_ws_1[label = "wildshape CR +1"];
-      dr_ws_2[label = "wildshape CR +1"];
-      dr_ws_3[label = "wildshape CR +1"];
+      dr_ss_l1_1 [label = "level 1 spellslot"];
+      dr_ss_l1_2 [label = "level 1 spellslot"];
+      dr_ss_l1_3 [label = "level 1 spellslot"];
+      dr_ss_l1_4 [label = "level 1 spellslot"];
+      dr_ss_l1_5 [label = "level 1 spellslot"];
+      dr_ss_l2_1 [label = "level 2 spellslot"];
+      dr_ss_l2_2 [label = "level 2 spellslot"];
+      dr_ss_l2_3 [label = "level 2 spellslot"];
+
+      dr_ws_1 [label = "wildshape CR +1"];
+      dr_ws_2 [label = "wildshape CR +1"];
+      dr_ws_3 [label = "wildshape CR +1"];
 
     //proficiencies
       dr_la [label = "prof: light armor"];
       dr_sh [label= "prof: shield"];
       dr_t_helrbalismkit [label = "prof: herbalism kit"];
+
+      dr_hp4_1 [label = "+4hp"];
+      dr_hp4_2 [label = "+4hp"];
+      dr_hp4_3 [label = "+4hp"];
+
+
     subgraph dr_minor{
       node [penwidth = 0.1, shape = "ellipse"];
 
@@ -157,25 +165,39 @@ digraph PathofDnD{
       dr_javelin [label="prof: javelin"];
 
       dr_hp2_1 [label = "+2hp"];
+      dr_hp2_2 [label = "+2hp"];
+      dr_hp2_3 [label = "+2hp"];
+      dr_hp2_4 [label = "+2hp"];
+      dr_hp2_5 [label = "+2hp"];
+
+      dr_conHp_1 [label = "+Con hp"];
+      dr_conHp_2 [label = "+Con hp"];
+      dr_conHp_3 [label = "+Con hp"];
+
 
     }
     //edges
-    human -> dr_sickle -> dr_t_helrbalismkit;
+    human -> dr_sickle;
+    dr_sickle -> dr_hp2_5 -> dr_t_helrbalismkit;
 
     dr_t_helrbalismkit -> dr_la;
     dr_t_helrbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
     dr_t_helrbalismkit -> dr_p_medicine;
 
     dr_e_nature -> dr_s_wis[arrowhead = empty];
-    dr_e_nature -> "Feature: Wanderer"[arrowhead = empty];
+    dr_e_nature -> dr_f_wanderer[arrowhead = empty];
+
+    dr_f_wanderer -> dr_hp2_3 -> dr_hp4_2;
 
     dr_la -> dr_sling -> "druidic";
     dr_la -> dr_dart -> dr_ws_1;
     dr_la -> dr_skill_2;
+    dr_la -> dr_conHp_2 -> dr_hp2_4 -> dr_sh;
 
     "druidic"  ->dr_ss_l1_1;
     "druidic" -> dr_sh;
     "druidic" -> dr_cantrip_2 -> dr_cantrip_3 -> dr_ss_l1_5;
+    "druidic" -> dr_wis1_1;
 
     dr_sh -> dr_hp2_1 -> dr_s_int;
     dr_sh -> {dr_quarterstaff dr_javelin dr_club};
@@ -191,6 +213,7 @@ digraph PathofDnD{
 
     dr_recovery_1 -> dr_ss_l1_5;
     dr_recovery_1 -> "circle spells";
+    dr_recovery_1 -> dr_conHp_3 -> dr_hp4_3;
 
     "circle spells" -> dr_ss_l2_3;
 
@@ -199,6 +222,7 @@ digraph PathofDnD{
     dr_ws_1 -> "combat wild shape"
 
     "combat wild shape" -> dr_ss_l1_4;
+    "combat wild shape" -> dr_hp2_2 -> dr_conHp_1 -> dr_hp4_1;
 
     dr_ss_l1_4 -> dr_ws_2;
 
@@ -206,6 +230,8 @@ digraph PathofDnD{
 
     dr_ws_2 -> dr_ws_3;
     dr_ws_2 -> dr_ss_l2_2;
+
+
 
   }
 
@@ -249,6 +275,7 @@ digraph PathofDnD{
 
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
     pa_find_steed [label = "once a day: \nfind steed"];
+
 
 
     subgraph pa_oath_ancient{
@@ -370,7 +397,7 @@ digraph PathofDnD{
     pa_hp_con_1 -> pa_ve_ten_fight -> pa_ve_ten_restitution -> pa_ve_spell_bane;
     pa_hp_con_1 -> pa_ve_ten_nomercy ->pa_ve_ten_anymeans -> pa_ve_spell_huntersm;
 
-    "divine health" ->pa_layonh_3;
+    "divine health" -> pa_layonh_3;
 
     pa_an_spell_speakwani -> pa_hp4_1;
     pa_an_spell_ensnaringstrike -> pa_hp4_1;
@@ -391,7 +418,7 @@ digraph PathofDnD{
   }
 
   //Barbarian -- Druid
-  bb_e_survival -> "Feature: Wanderer"
+  bb_e_survival -> dr_f_wanderer;
 
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
