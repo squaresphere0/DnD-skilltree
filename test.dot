@@ -1,7 +1,8 @@
 digraph PathofDnD{
   node [penwidth = 1.0, fontsize =8, style = "filled", fillcolor = "#ffffff", color = "0.72,0.4,0.9", shape = "doubleoctagon", fontname = "Arial"];
   graph [root = "human", overlap = "false", bgcolor = "0.72,0.4,0.3";];
-  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9", dir = "both", arrowtail = none];
+  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9", dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
+
 
 
   "human" [fontsize = 16, penwidth = 2];
@@ -184,8 +185,8 @@ digraph PathofDnD{
     dr_t_helrbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
     dr_t_helrbalismkit -> dr_p_medicine;
 
-    dr_e_nature -> dr_s_wis[arrowhead = empty];
-    dr_e_nature -> dr_f_wanderer[arrowhead = empty];
+    dr_e_nature -> dr_s_wis[arrowhead = normal];
+    dr_e_nature -> dr_f_wanderer[arrowhead = normal];
 
     dr_f_wanderer -> dr_hp2_3 -> dr_hp4_2;
 
@@ -206,7 +207,7 @@ digraph PathofDnD{
 
     dr_ss_l2_1 -> dr_p_arcana -> dr_l_primordial;
 
-    dr_ss_l1_1 -> dr_ss_l1_2[arrowhead = empty];
+    dr_ss_l1_1 -> dr_ss_l1_2[arrowhead = normal];
     dr_ss_l1_1 -> dr_s_wis;
 
     dr_ss_l1_2 -> dr_recovery_1;
@@ -375,7 +376,7 @@ digraph PathofDnD{
 
     pa_s_cha ->pa_ss_l1_3;
 
-    pa_ss_l1_3 -> pa_ss_l1_1[arrowhead = empty];
+    pa_ss_l1_3 -> pa_ss_l1_1[arrowhead = normal];
     pa_ss_l1_3 -> pa_hp2_3;
 
     pa_ss_l1_1 -> "divine smite";
@@ -408,12 +409,12 @@ digraph PathofDnD{
     pa_ve_spell_bane -> pa_hp4_3;
     pa_ve_spell_huntersm -> pa_hp4_3;
 
-    pa_hp4_1 -> pa_cha_1 [arrowhead = "empty"];
-    pa_hp4_1 -> pa_str_2 [arrowhead = "empty"];
+    pa_hp4_1 -> pa_cha_1 [arrowhead = "normal"];
+    pa_hp4_1 -> pa_str_2 [arrowhead = "normal"];
 
-    pa_hp4_2 -> pa_str_2 [arrowhead = "empty"];
+    pa_hp4_2 -> pa_str_2 [arrowhead = "normal"];
 
-    pa_hp4_3 -> pa_cha_1 [arrowhead = "empty"];
+    pa_hp4_3 -> pa_cha_1 [arrowhead = "normal"];
 
   }
 
@@ -424,7 +425,7 @@ digraph PathofDnD{
   bb_hp_con_3 -> pa_sh;
 
   //Druid -- Paladin
-  dr_p_medicine  -> pa_hp_base [arrowhead = "empty"];
+  dr_p_medicine  -> pa_hp_base [arrowhead = "normal"];
   "combat wild shape" -> pa_ss_l1_5;
 
 }
