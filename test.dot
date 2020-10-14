@@ -1,9 +1,7 @@
 digraph PathofDnD{
-  node [penwidth = 1.0, fontsize =8, style = "filled",
-  fillcolor = "#ffffff", color = "0.72,0.4,0.9",
-  shape = "doubleoctagon", fontname = "Arial"];
+  node [penwidth = 1.0, fontsize =8, style = "filled", fillcolor = "#ffffff", color = "0.72,0.4,0.9", shape = "doubleoctagon", fontname = "Arial"];
   graph [root = "human", overlap = "false", bgcolor = "0.72,0.4,0.3";];
-  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9"];
+  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9", dir = "both", arrowtail = none];
 
 
   "human" [fontsize = 16, penwidth = 2];
@@ -224,6 +222,8 @@ digraph PathofDnD{
     pa_s_cha [label = "save CHA"];
 
     pa_str_1 [label = "+1 STR"];
+    pa_str_2 [label = "+1 STR"];
+    pa_cha_1 [label = "+1 CHA"];
 
     pa_layonh_1 [label = "lay on hands +5"];
     pa_layonh_2 [label = "lay on hands +5"];
@@ -233,13 +233,23 @@ digraph PathofDnD{
     pa_ss_l1_2 [label = "level 1 spellslot"];
     pa_ss_l1_3 [label = "level 1 spellslot"];
     pa_ss_l1_4 [label = "level 1 spellslot"];
+    pa_ss_l1_5 [label = "level 1 spellslot"];
 
     pa_hp_base [label = "+4hp"];
     pa_hp_con_1 [label = "+[CON]hp"];
+    pa_hp_con_2 [label = "+[CON]hp"];
+    pa_hp4_1 [label = "+4hp"];
+    pa_hp4_2 [label = "+4hp"];
+    pa_hp4_3 [label = "+4hp"];
+    pa_hp4_4 [label = "+4hp"];
 
     pa_fightstyle [label = "choose fighting style"];
 
+    pa_feat_mounted [label = "feature: mounted combatant"];
+
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
+    pa_find_steed [label = "once a day: \nfind steed"];
+
 
     subgraph pa_oath_ancient{
       pa_an_spell_ensnaringstrike [label = "oath spell: ensnaring strike"];
@@ -266,6 +276,9 @@ digraph PathofDnD{
       pa_hp2_2 [label = "+2hp"];
       pa_hp2_3 [label = "+2hp"];
       pa_hp2_4 [label = "+2hp"];
+      pa_hp2_5 [label = "+2hp"];
+      pa_hp2_6 [label = "+2hp"];
+      pa_hp2_7 [label = "+2hp"];
 
       pa_skill_1 [label = "choose skill"];
       pa_skill_2 [label = "choose skill"];
@@ -277,6 +290,8 @@ digraph PathofDnD{
       pa_glave [label = "proficiency: glaive"];
       pa_mace [label= "proficiency: mace"];
       pa_lance [label = "proficiency: lance"];
+
+      pa_mount_shield [label = "shield AC bonus for mount"];
 
       subgraph pa_an_minor{
         pa_an_ten_kindle[label= "kindle the light"];
@@ -308,17 +323,26 @@ digraph PathofDnD{
     pa_ma -> pa_morningstar -> pa_warhammer -> pa_sh;
 
     pa_sh -> pa_fightstyle;
-    pa_sh -> pa_str_1 -> pa_ha;
-    pa_sh -> pa_glave -> pa_lance ->pa_p_animalhandling;
+    pa_sh -> pa_str_1;
+    pa_sh -> pa_glave -> pa_lance ->pa_p_animalhandling -> pa_find_steed;
+
+    pa_find_steed -> pa_mount_shield -> pa_feat_mounted;
+
+    pa_str_1 -> pa_hp2_6 -> pa_hp2_7 ->pa_ha;
 
     "divine sense" -> pa_hp_base;
     "divine sense" -> pa_s_cha;
+    "divine sense" -> pa_skill_1;
 
     pa_hp_base -> pa_hp2_4 -> pa_layonh_1;
 
     pa_layonh_1 -> pa_s_wis;
     pa_layonh_1 ->pa_skill_2;
-    pa_layonh_1 -> pa_ss_l1_4 -> pa_hand_less_somantic;
+    pa_layonh_1 -> pa_ss_l1_4;
+
+    pa_ss_l1_4 -> pa_hand_less_somantic;
+
+    pa_hand_less_somantic -> pa_ss_l1_5;
 
     pa_s_wis -> pa_ss_l1_2;
 
@@ -332,6 +356,9 @@ digraph PathofDnD{
 
     pa_fightstyle ->pa_hp_1 -> "divine smite";
     pa_fightstyle -> pa_layonh_2;
+    pa_fightstyle -> pa_hp2_5 -> pa_hp_con_2;
+
+    pa_hp_con_2 -> pa_hp4_4;
 
     pa_ss_l1_1 -> pa_hp_con_1;
 
@@ -344,6 +371,23 @@ digraph PathofDnD{
     pa_hp_con_1 -> pa_ve_ten_nomercy ->pa_ve_ten_anymeans -> pa_ve_spell_huntersm;
 
     "divine health" ->pa_layonh_3;
+
+    pa_an_spell_speakwani -> pa_hp4_1;
+    pa_an_spell_ensnaringstrike -> pa_hp4_1;
+
+    pa_de_spell_pfromeng -> pa_hp4_2;
+    pa_de_spell_sanctuary -> pa_hp4_2;
+
+    pa_ve_spell_bane -> pa_hp4_3;
+    pa_ve_spell_huntersm -> pa_hp4_3;
+
+    pa_hp4_1 -> pa_cha_1 [arrowhead = "empty"];
+    pa_hp4_1 -> pa_str_2 [arrowhead = "empty"];
+
+    pa_hp4_2 -> pa_str_2 [arrowhead = "empty"];
+
+    pa_hp4_3 -> pa_cha_1 [arrowhead = "empty"];
+
   }
 
   //Barbarian -- Druid
@@ -353,5 +397,7 @@ digraph PathofDnD{
   bb_hp_con_3 -> pa_sh;
 
   //Druid -- Paladin
-  pa_hp_base -> dr_p_medicine [arrowhead = "empty"];
+  dr_p_medicine  -> pa_hp_base [arrowhead = "empty"];
+  "combat wild shape" -> pa_ss_l1_5;
+
 }
