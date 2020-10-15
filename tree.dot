@@ -336,10 +336,10 @@ digraph PathofDnD{
       }
 
       subgraph pa_ve_minor{
-        pa_ve_ten_fight;
-        pa_ve_ten_restitution;
-        pa_ve_ten_nomercy;
-        pa_ve_ten_anymeans;
+        pa_ve_ten_fight[label = "Fight the Greter Evil"];
+        pa_ve_ten_restitution[label = "Restitution"];
+        pa_ve_ten_nomercy[label = "No Mercy for the Wicked"];
+        pa_ve_ten_anymeans[label = "By Any Means Necessary"];
       }
     }
 
