@@ -13,6 +13,8 @@ digraph PathofDnD{
   node [style = "filled" fillcolor = "#fff9c0";]
 
       bb_rage_1[label = "rage +1"];
+      bb_rage_2[label = "rage +1"];
+      bb_rage_3[label = "rage +1"];
 
       bb_uadefense [label = "unarmored defense" ];
       bb_reckless [label = "reckless attack"];
@@ -48,7 +50,10 @@ digraph PathofDnD{
     bb_hp4_1 [label = "+4hp"]
     bb_hp4_2 [label = "+4hp"]
 
+    bb_feat_greatweapon_bludgeon [label = "Feature:\nGreatweapon Master \nfor bludgeoning weapons"];
+
     bb_advantage_beast [label = "advantage on\n saving throws\n against beasts"]
+    bb_recover_rage [label = "once a day:\n recover 1 rage\n on a short rest"]
 
 
     subgraph bb_minor{
@@ -94,6 +99,7 @@ digraph PathofDnD{
     human-> bb_club -> bb_greatclub-> bb_uadefense;
 
     bb_s_str -> bb_skill_1;
+    bb_s_str -> bb_rage_3;
 
     bb_uadefense-> bb_hp_6 -> bb_s_str;
     bb_uadefense-> bb_str_1 -> bb_hp_base;
@@ -117,10 +123,11 @@ digraph PathofDnD{
     bb_hp_base -> bb_skill_2;
 
     bb_hp_con_1 -> bb_danger_sense;
+    bb_hp_con_1 -> bb_rage_2;
 
     bb_reckless -> bb_hp_1 -> bb_frenzy;
     bb_reckless -> bb_hp_3 -> bb_con_1;
-    bb_reckless -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning;
+    bb_reckless -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning -> bb_feat_greatweapon_bludgeon;
 
     bb_danger_sense -> bb_hp_2 -> bb_totem_spirit;
     bb_danger_sense -> bb_hp_4 -> bb_con_1;
@@ -135,7 +142,7 @@ digraph PathofDnD{
 
     bb_totem_spirit -> bb_spirit_seeker;
 
-    bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation;
+    bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation -> bb_recover_rage;
   }
 
   subgraph Druid{
