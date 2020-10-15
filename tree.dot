@@ -76,6 +76,7 @@ digraph PathofDnD{
       bb_hp_3 [label="+1hp"]
       bb_hp_4 [label="+1hp"]
       bb_hp_5 [label="+1hp"]
+      bb_hp_6 [label="+1hp"]
       bb_hp2_1 [label = "+2hp"]
       bb_hp2_2 [label = "+2hp"]
       bb_hp2_3 [label = "+2hp"]
@@ -94,7 +95,7 @@ digraph PathofDnD{
 
     bb_s_str -> bb_skill_1;
 
-    bb_uadefense-> bb_s_str;
+    bb_uadefense-> bb_hp_6 -> bb_s_str;
     bb_uadefense-> bb_str_1 -> bb_hp_base;
     bb_uadefense-> bb_maul ->bb_rage_1
     bb_uadefense-> bb_battleaxe -> bb_sh;
@@ -105,6 +106,8 @@ digraph PathofDnD{
     bb_rage_1 -> bb_hp_con_4;
 
     bb_hp_con_4 -> bb_hp4_2;
+
+    bb_hp4_2 -> bb_damageredux_beast_1 -> bb_damageredux_beast_2 -> bb_advantage_beast;
 
     bb_sh ->  bb_la;
     bb_sh -> bb_danger_sense;
@@ -121,9 +124,11 @@ digraph PathofDnD{
 
     bb_danger_sense -> bb_hp_2 -> bb_totem_spirit;
     bb_danger_sense -> bb_hp_4 -> bb_con_1;
-    bb_danger_sense ->bb_hp2_1 -> bb_hp_con_2;
+    bb_danger_sense -> bb_hp2_1 -> bb_hp_con_2;
+    bb_danger_sense -> bb_initiative_1 -> bb_dex_1;
 
     bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
+    bb_hp_con_2 -> bb_ma;
 
     bb_con_1 -> bb_s_con
     bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
