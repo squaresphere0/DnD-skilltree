@@ -369,7 +369,7 @@ digraph PathofDnD{
     pa_hp_base -> pa_hp2_4 -> pa_layonh_1;
 
     pa_layonh_1 -> pa_s_wis;
-    pa_layonh_1 ->pa_skill_2;
+    pa_layonh_1 ->pa_skill_2 -> pa_cha_2;
     pa_layonh_1 -> pa_ss_l1_4;
 
     pa_ss_l1_4 -> pa_hand_less_somantic;
@@ -384,7 +384,7 @@ digraph PathofDnD{
     pa_ss_l1_3 -> pa_hp2_3;
 
     pa_ss_l1_1 -> "divine smite";
-    pa_ss_l1_1 -> pa_ss_l1_2;
+    pa_ss_l1_1 -> pa_hp_2 -> pa_ss_l1_2;
 
     pa_fightstyle ->pa_hp_1 -> "divine smite";
     pa_fightstyle -> pa_layonh_2;
@@ -393,6 +393,8 @@ digraph PathofDnD{
     pa_hp_con_2 -> pa_hp4_4;
 
     pa_ss_l1_1 -> pa_hp_con_1;
+
+    pa_layonh_2 -> pa_p_religion -> pa_feat_shelter_faithful;
 
     pa_hp_con_1 -> pa_hp2_1 -> pa_hp2_2 ->"divine health";
     pa_hp_con_1 ->  pa_an_ten_kindle -> pa_an_ten_shelter -> pa_an_spell_speakwani;
