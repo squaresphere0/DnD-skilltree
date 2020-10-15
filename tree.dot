@@ -501,11 +501,12 @@ digraph PathofDnD{
 
   //Barbarian -- Druid
   bb_e_survival -> dr_feat_wanderer;
+  bb_advantage_beast -> dr_adv_plants;
 
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
 
   //Druid -- Paladin
-  dr_p_medicine  -> pa_hp_base [arrowhead = "normal"];
+  dr_p_medicine  -> pa_hp_base [arrowtail = "normal"];
   "combat wild shape" -> pa_ss_l1_5;
 }
