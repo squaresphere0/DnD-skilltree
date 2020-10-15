@@ -145,17 +145,38 @@ digraph PathofDnD{
     bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation -> bb_recover_rage;
   }
 
+
+  /*naming:
+  class
+    adv         advantage
+    attributeNumber   bonus to a [ATRRIBUTE]
+    damageinc_type
+    damageredux_type
+    cantrip     cantrip
+    e           expertise
+    feat        feat
+    hp          [amount]
+    l           language
+    p           proficiency
+    s           save
+    skill       skill
+    ss          spellslot
+    ws          wildshape
+
+
+    e.g. dr_hp2_1
+         dr_s_wis_1
+  */
   subgraph Druid{
     node [style = "filled" fillcolor = "#c0ffc0";]
     //class Skills
       "druidic" "circle spells" "combat wild shape"
 
-      dr_f_wanderer [label = "Feature: Wanderer"];
-
-      dr_recovery_1 [label = "Natural recovery +1"];
+      dr_adv_plants [label = "adv. on saving throws\n against plants"];
 
       dr_s_int [label = "save INT"];
       dr_s_wis [label = "save WIS"];
+
       dr_e_nature [label = "expertise: nature"];
 
       dr_wis1_1 [label = "+1 Wis"];
@@ -169,19 +190,32 @@ digraph PathofDnD{
       dr_ss_l2_2 [label = "level 2 spellslot"];
       dr_ss_l2_3 [label = "level 2 spellslot"];
 
+      dr_recovery_1 [label = "Natural recovery +1"];
+
       dr_ws_1 [label = "wildshape CR +1"];
       dr_ws_2 [label = "wildshape CR +1"];
       dr_ws_3 [label = "wildshape CR +1"];
 
-    //proficiencies
-      dr_la [label = "prof: light armor"];
-      dr_sh [label= "prof: shield"];
-      dr_t_helrbalismkit [label = "prof: herbalism kit"];
+      dr_feat_wanderer [label = "Feature: Wanderer"];
 
+    //proficiencies
+      dr_p_la [label = "prof: light armor"];
+      dr_p_sh [label= "prof: shield"];
+      dr_p_herbalismkit [label = "prof: herbalism kit"];
+
+    //hp
       dr_hp4_1 [label = "+4hp"];
       dr_hp4_2 [label = "+4hp"];
       dr_hp4_3 [label = "+4hp"];
 
+      dr_natureHealer [label = "1/day, while in nature,\n restore 1d8 to 6 creatures\n during a short rest"];
+
+      dr_conHp_1 [label = "+[CON] hp"];
+      dr_conHp_2 [label = "+[CON] hp"];
+      dr_conHp_3 [label = "+[CON] hp"];
+
+    //damage changes
+      dr_damageinc_ws [label = "+2 to all wild shape dmg"];
 
     subgraph dr_minor{
       node [penwidth = 0.1, shape = "ellipse"];
@@ -198,12 +232,13 @@ digraph PathofDnD{
 
       dr_l_primordial [label = "language: primordial"]
 
-      dr_club [label="prof: club"];
-      dr_sickle [label="prof: sickle"];
-      dr_dart [label="prof: dart"];
-      dr_sling [label="prof: sling"];
-      dr_quarterstaff [label="prof: quarterstaff"];
-      dr_javelin [label="prof: javelin"];
+      dr_p_club [label="prof: club"];
+      dr_p_sickle [label="prof: sickle"];
+      dr_p_dart [label="prof: dart"];
+      dr_p_sling [label="prof: sling"];
+      dr_p_quarterstaff [label="prof: quarterstaff"];
+      dr_p_javelin [label="prof: javelin"];
+      dr_p_shillelagh [label = "Shillelagh"];
 
       dr_hp2_1 [label = "+2hp"];
       dr_hp2_2 [label = "+2hp"];
@@ -211,37 +246,34 @@ digraph PathofDnD{
       dr_hp2_4 [label = "+2hp"];
       dr_hp2_5 [label = "+2hp"];
 
-      dr_conHp_1 [label = "+Con hp"];
-      dr_conHp_2 [label = "+Con hp"];
-      dr_conHp_3 [label = "+Con hp"];
-
-
+    //damage changes
+      dr_damageinc_bludg [label = "+1 bludgeoning dmg"];
+      dr_damageredux_plants_1 [label = "-2 damage taken from plants"];
+      dr_damageredux_plants_2 [label = "-2 damage taken from plants"];
     }
     //edges
-    human -> dr_sickle;
-    dr_sickle -> dr_hp2_5 -> dr_t_helrbalismkit;
+    human -> dr_p_sickle;
+    dr_p_sickle -> dr_hp2_5 -> dr_p_herbalismkit;
 
-    dr_t_helrbalismkit -> dr_la;
-    dr_t_helrbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
-    dr_t_helrbalismkit -> dr_p_medicine;
+    dr_p_herbalismkit -> dr_p_la;
+    dr_p_herbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
+    dr_p_herbalismkit -> dr_p_medicine;
 
     dr_e_nature -> dr_s_wis[arrowhead = normal];
-    dr_e_nature -> dr_f_wanderer[arrowhead = normal];
+    dr_e_nature -> dr_feat_wanderer[arrowhead = normal];
 
-    dr_f_wanderer -> dr_hp2_3 -> dr_hp4_2;
+    dr_feat_wanderer -> dr_hp2_3 -> dr_hp4_2;
 
-    dr_la -> dr_sling -> "druidic";
-    dr_la -> dr_dart -> dr_ws_1;
-    dr_la -> dr_skill_2;
-    dr_la -> dr_conHp_2 -> dr_hp2_4 -> dr_sh;
+    dr_p_la -> dr_p_sling -> "druidic";
+    dr_p_la -> dr_p_dart -> dr_ws_1;
+    dr_p_la -> dr_skill_2;
+    dr_p_la -> dr_conHp_2 -> dr_hp2_4 -> dr_p_sh;
 
-    "druidic"  ->dr_ss_l1_1;
-    "druidic" -> dr_sh;
+    "druidic"  -> {dr_ss_l1_1, dr_p_sh, dr_wis1_1};
     "druidic" -> dr_cantrip_2 -> dr_cantrip_3 -> dr_ss_l1_5;
-    "druidic" -> dr_wis1_1;
 
-    dr_sh -> dr_hp2_1 -> dr_s_int;
-    dr_sh -> {dr_quarterstaff dr_javelin dr_club};
+    dr_p_sh -> dr_hp2_1 -> dr_s_int;
+    dr_p_sh -> {dr_p_quarterstaff, dr_p_javelin dr_p_club};
 
     dr_ss_l1_5 -> dr_ss_l2_1;
 
@@ -258,7 +290,7 @@ digraph PathofDnD{
 
     "circle spells" -> dr_ss_l2_3;
 
-    dr_ws_1 -> dr_sh;
+    dr_ws_1 -> dr_p_sh;
     dr_ws_1 -> dr_cantrip_1 -> dr_ss_l1_3;
     dr_ws_1 -> "combat wild shape"
 
@@ -266,14 +298,18 @@ digraph PathofDnD{
     "combat wild shape" -> dr_hp2_2 -> dr_conHp_1 -> dr_hp4_1;
 
     dr_ss_l1_4 -> dr_ws_2;
-
     dr_ss_l1_3 -> dr_ws_2;
 
     dr_ws_2 -> dr_ws_3;
     dr_ws_2 -> dr_ss_l2_2;
 
+    dr_p_quarterstaff -> dr_p_shillelagh -> dr_damageinc_bludg;
+    dr_damageinc_bludg -> dr_damageinc_ws -> dr_ws_3;
 
+    dr_ss_l2_3 -> dr_natureHealer;
 
+    dr_hp4_3 -> dr_damageredux_plants_1 -> dr_damageredux_plants_2;
+    dr_damageredux_plants_2 -> dr_adv_plants;
   }
 
   subgraph paladin{
@@ -464,7 +500,7 @@ digraph PathofDnD{
   }
 
   //Barbarian -- Druid
-  bb_e_survival -> dr_f_wanderer;
+  bb_e_survival -> dr_feat_wanderer;
 
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
@@ -472,5 +508,4 @@ digraph PathofDnD{
   //Druid -- Paladin
   dr_p_medicine  -> pa_hp_base [arrowhead = "normal"];
   "combat wild shape" -> pa_ss_l1_5;
-
 }

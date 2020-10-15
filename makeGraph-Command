@@ -1,2 +1,6 @@
-neato -Tsvg -Gstart=rand test.dot -o test.svg
+#creates graph from nodes and edges
+neato -Tsvg -Gstart=rand tree.dot -o graph.svg
+
+#open the graph in google Chrome
+google-chrome graph.svg
 
