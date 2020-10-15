@@ -11,21 +11,38 @@ digraph PathofDnD{
   subgraph Barbarian{
 
   node [style = "filled" fillcolor = "#fff9c0";]
-  //class Skills
-    //1
+
       bb_rage_1[label = "rage +1"];
-       "unarmored defense" "+6hp";
-    //2
-      "reckless attack" "danger sense"
-    //3
-      "frenzy" "spirit seeker" "totem spirit"
+      bb_rage_2[label = "rage +1"];
+      bb_rage_3[label = "rage +1"];
+
+      bb_uadefense [label = "unarmored defense" ];
+      bb_reckless [label = "reckless attack"];
+      bb_danger_sense[label = "danger sense"];
+
+      bb_frenzy[label = "frenzy"];
+      bb_spirit_seeker [label = "spirit seeker"];
+      bb_totem_spirit [label = "totem spirit"]
+
   //proficiencies
-    "light armor" "shield" "save: Con" "save: Str" "skill choice"
+
+
+    bb_s_con [label = "save CON"];
+    bb_s_str [label = "save STR"];
+
+    bb_sh [label = "proficiency: shield"];
+    bb_la[label = "profociency: light armor"];
+    bb_ma[label = "profociency: medium armor"];
+
     bb_skill_1[label = "choose skill"];
+    bb_skill_2[label = "choose skill"];
     bb_e_survival[label = "expertise: survival"];
 
     bb_con_1 [label="+1 CON"];
+    bb_dex_1 [label="+1 DEX"];
+    bb_str_1 [label="+1 STR"];
 
+    bb_hp_base [label = "+6hp"]
     bb_hp_con_1 [label = "+[CON]hp"]
     bb_hp_con_2 [label = "+[CON]hp"]
     bb_hp_con_3 [label = "+[CON]hp"]
@@ -33,17 +50,30 @@ digraph PathofDnD{
     bb_hp4_1 [label = "+4hp"]
     bb_hp4_2 [label = "+4hp"]
 
+    bb_feat_greatweapon_bludgeon [label = "Feature:\nGreatweapon Master \nfor bludgeoning weapons"];
+
+    bb_advantage_beast [label = "advantage on\n saving throws\n against beasts"]
+    bb_recover_rage [label = "once a day:\n recover 1 rage\n on a short rest"]
+
+
     subgraph bb_minor{
     node [penwidth = 0.1, shape = "ellipse"];
-    //proficiencies
-      "club" "greatclub"  "battleaxe" "maul"
+
+
+      bb_club [label = "proficiency: club"];
+      bb_greatclub [label = "proficiency: greatclub"];
+      bb_battleaxe [label = "proficiency: battleaxe"];
+      bb_maul [label = "proficiency: maul"];
+
       bb_p_survival[label = "proficiency: survival"];
       bb_p_intimidation[label = "proficiency: intimidation"]
 
       bb_advantage_intimidation [label = "while raging: advantage: intimidation"]
 
+          bb_initiative_1 [label = "+1 initiative"];
+
     //boni
-      bb_str_1 [label="+1 STR"];
+
       bb_rd_1 [label="+1 rage damage"]
       bb_rd_2 [label="+1 rage damage"]
       bb_hp_1 [label="+1hp"]
@@ -51,58 +81,68 @@ digraph PathofDnD{
       bb_hp_3 [label="+1hp"]
       bb_hp_4 [label="+1hp"]
       bb_hp_5 [label="+1hp"]
+      bb_hp_6 [label="+1hp"]
       bb_hp2_1 [label = "+2hp"]
       bb_hp2_2 [label = "+2hp"]
       bb_hp2_3 [label = "+2hp"]
 
       bb_damageredux_slashing_1 [label = "-2 slashing damage taken"]
+      bb_damageredux_beast_1 [label = "-2 damage taken from beasts"]
+      bb_damageredux_beast_2 [label = "-2 damage taken from beasts"]
       bb_damageinc_bludgeoning_1 [label = "+1 bludgeoning damage"]
       bb_critinc_damage_bludgeoning [label = "+1d6 bludgeoning critical damage"]
+
 
     }
 
   //edges
-    human-> "club" -> "greatclub" -> "unarmored defense" ;
+    human-> bb_club -> bb_greatclub-> bb_uadefense;
 
-    "save: Str" -> bb_skill_1;
+    bb_s_str -> bb_skill_1;
+    bb_s_str -> bb_rage_3;
 
-    "unarmored defense" -> "save: Str";
-    "unarmored defense" -> bb_str_1 -> "+6hp";
-    "unarmored defense" -> "maul" ->bb_rage_1
-    "unarmored defense" -> "battleaxe" -> "shield";
-    "unarmored defense" -> bb_p_survival -> bb_e_survival;
+    bb_uadefense-> bb_hp_6 -> bb_s_str;
+    bb_uadefense-> bb_str_1 -> bb_hp_base;
+    bb_uadefense-> bb_maul ->bb_rage_1
+    bb_uadefense-> bb_battleaxe -> bb_sh;
+    bb_uadefense-> bb_p_survival -> bb_e_survival;
 
-    bb_rage_1 -> bb_rd_2 -> "reckless attack";
+    bb_rage_1 -> bb_rd_2 -> bb_reckless;
     bb_rage_1 -> bb_rd_1;
     bb_rage_1 -> bb_hp_con_4;
 
     bb_hp_con_4 -> bb_hp4_2;
 
-    "shield" ->  "light armor";
-    "shield" -> "danger sense";
+    bb_hp4_2 -> bb_damageredux_beast_1 -> bb_damageredux_beast_2 -> bb_advantage_beast;
 
-    "+6hp" -> bb_hp_5 -> "reckless attack";
-    "+6hp" -> bb_hp_con_1;
-    "+6hp" -> "skill choice";
+    bb_sh ->  bb_la;
+    bb_sh -> bb_danger_sense;
 
-    bb_hp_con_1 -> "danger sense";
+    bb_hp_base -> bb_hp_5 -> bb_reckless;
+    bb_hp_base -> bb_hp_con_1;
+    bb_hp_base -> bb_skill_2;
 
-    "reckless attack" -> bb_hp_1 -> "frenzy";
-    "reckless attack" -> bb_hp_3 -> bb_con_1;
-    "reckless attack" -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning;
+    bb_hp_con_1 -> bb_danger_sense;
+    bb_hp_con_1 -> bb_rage_2;
 
-    "danger sense" -> bb_hp_2 -> "totem spirit";
-    "danger sense" -> bb_hp_4 -> bb_con_1;
-    "danger sense" ->bb_hp2_1 -> bb_hp_con_2;
+    bb_reckless -> bb_hp_1 -> bb_frenzy;
+    bb_reckless -> bb_hp_3 -> bb_con_1;
+    bb_reckless -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning -> bb_feat_greatweapon_bludgeon;
+
+    bb_danger_sense -> bb_hp_2 -> bb_totem_spirit;
+    bb_danger_sense -> bb_hp_4 -> bb_con_1;
+    bb_danger_sense -> bb_hp2_1 -> bb_hp_con_2;
+    bb_danger_sense -> bb_initiative_1 -> bb_dex_1;
 
     bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
+    bb_hp_con_2 -> bb_ma;
 
-    bb_con_1 -> "save: Con"
+    bb_con_1 -> bb_s_con
     bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
 
-    "totem spirit" -> "spirit seeker";
+    bb_totem_spirit -> bb_spirit_seeker;
 
-    "frenzy" -> bb_p_intimidation ->bb_advantage_intimidation;
+    bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation -> bb_recover_rage;
   }
 
   subgraph Druid{
