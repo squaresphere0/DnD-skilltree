@@ -251,6 +251,7 @@ digraph PathofDnD{
     pa_str_1 [label = "+1 STR"];
     pa_str_2 [label = "+1 STR"];
     pa_cha_1 [label = "+1 CHA"];
+    pa_cha_2 [label = "+1 CHA"];
 
     pa_layonh_1 [label = "lay on hands +5"];
     pa_layonh_2 [label = "lay on hands +5"];
@@ -273,6 +274,7 @@ digraph PathofDnD{
     pa_fightstyle [label = "choose fighting style"];
 
     pa_feat_mounted [label = "feature: mounted combatant"];
+    pa_feat_shelter_faithful [label = "feature: Shelter the Faithful"]
 
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
     pa_find_steed [label = "once a day: \nfind steed"];
@@ -300,6 +302,7 @@ digraph PathofDnD{
       node [penwidth = 0.1, shape = "ellipse"];
 
       pa_hp_1 [label = "+1hp"];
+      pa_hp_2 [label = "+1hp"];
       pa_hp2_1 [label = "+2hp"];
       pa_hp2_2 [label = "+2hp"];
       pa_hp2_3 [label = "+2hp"];
@@ -312,8 +315,8 @@ digraph PathofDnD{
       pa_skill_2 [label = "choose skill"];
 
       pa_p_animalhandling [label = "proficiency: animal handling"];
+      pa_p_religion[label = "proficiency: religion"]
 
-      pa_morningstar [label = "proficiency: morningstar"];
       pa_warhammer [label = "proficiency: warhammer"];
       pa_glave [label = "proficiency: glaive"];
       pa_mace [label= "proficiency: mace"];
@@ -336,10 +339,10 @@ digraph PathofDnD{
       }
 
       subgraph pa_ve_minor{
-        pa_ve_ten_fight;
-        pa_ve_ten_restitution;
-        pa_ve_ten_nomercy;
-        pa_ve_ten_anymeans;
+        pa_ve_ten_fight[label = "Fight the Greter Evil"];
+        pa_ve_ten_restitution[label = "Restitution"];
+        pa_ve_ten_nomercy[label = "No Mercy for the Wicked"];
+        pa_ve_ten_anymeans[label = "By Any Means Necessary"];
       }
     }
 
@@ -348,7 +351,7 @@ digraph PathofDnD{
     human -> pa_mace-> pa_ma;
 
     pa_ma ->"divine sense";
-    pa_ma -> pa_morningstar -> pa_warhammer -> pa_sh;
+    pa_ma -> pa_warhammer -> pa_sh;
 
     pa_sh -> pa_fightstyle;
     pa_sh -> pa_str_1;
@@ -365,7 +368,7 @@ digraph PathofDnD{
     pa_hp_base -> pa_hp2_4 -> pa_layonh_1;
 
     pa_layonh_1 -> pa_s_wis;
-    pa_layonh_1 ->pa_skill_2;
+    pa_layonh_1 ->pa_skill_2 -> pa_cha_2;
     pa_layonh_1 -> pa_ss_l1_4;
 
     pa_ss_l1_4 -> pa_hand_less_somantic;
@@ -380,7 +383,7 @@ digraph PathofDnD{
     pa_ss_l1_3 -> pa_hp2_3;
 
     pa_ss_l1_1 -> "divine smite";
-    pa_ss_l1_1 -> pa_ss_l1_2;
+    pa_ss_l1_1 -> pa_hp_2 -> pa_ss_l1_2;
 
     pa_fightstyle ->pa_hp_1 -> "divine smite";
     pa_fightstyle -> pa_layonh_2;
@@ -389,6 +392,8 @@ digraph PathofDnD{
     pa_hp_con_2 -> pa_hp4_4;
 
     pa_ss_l1_1 -> pa_hp_con_1;
+
+    pa_layonh_2 -> pa_p_religion -> pa_feat_shelter_faithful;
 
     pa_hp_con_1 -> pa_hp2_1 -> pa_hp2_2 ->"divine health";
     pa_hp_con_1 ->  pa_an_ten_kindle -> pa_an_ten_shelter -> pa_an_spell_speakwani;
