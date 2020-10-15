@@ -251,6 +251,7 @@ digraph PathofDnD{
     pa_str_1 [label = "+1 STR"];
     pa_str_2 [label = "+1 STR"];
     pa_cha_1 [label = "+1 CHA"];
+    pa_cha_2 [label = "+1 CHA"];
 
     pa_layonh_1 [label = "lay on hands +5"];
     pa_layonh_2 [label = "lay on hands +5"];
@@ -273,6 +274,7 @@ digraph PathofDnD{
     pa_fightstyle [label = "choose fighting style"];
 
     pa_feat_mounted [label = "feature: mounted combatant"];
+    pa_feat_shelter_faithful [label = "feature: Shelter the Faithful"]
 
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
     pa_find_steed [label = "once a day: \nfind steed"];
@@ -300,6 +302,7 @@ digraph PathofDnD{
       node [penwidth = 0.1, shape = "ellipse"];
 
       pa_hp_1 [label = "+1hp"];
+      pa_hp_2 [label = "+1hp"];
       pa_hp2_1 [label = "+2hp"];
       pa_hp2_2 [label = "+2hp"];
       pa_hp2_3 [label = "+2hp"];
@@ -312,6 +315,7 @@ digraph PathofDnD{
       pa_skill_2 [label = "choose skill"];
 
       pa_p_animalhandling [label = "proficiency: animal handling"];
+      pa_p_religion[label = "proficiency: religion"]
 
       pa_morningstar [label = "proficiency: morningstar"];
       pa_warhammer [label = "proficiency: warhammer"];
