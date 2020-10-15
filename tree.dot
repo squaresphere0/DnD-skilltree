@@ -14,18 +14,27 @@ digraph PathofDnD{
   //class Skills
     //1
       bb_rage_1[label = "rage +1"];
-       "unarmored defense" "+6hp";
+       "unarmored defense" ;
     //2
       "reckless attack" "danger sense"
     //3
       "frenzy" "spirit seeker" "totem spirit"
   //proficiencies
-    "light armor" "shield" "save: Con" "save: Str" "skill choice"
+
+
+    bb_s_con [label = "save CON"];
+    bb_s_str [label = "save STR"];
+
+    bb_sh [label = "proficiency: shield"];
+    bb_la[label = "profociency: light armor"];
+
     bb_skill_1[label = "choose skill"];
+    bb_skill_2[label = "choose skill"];
     bb_e_survival[label = "expertise: survival"];
 
     bb_con_1 [label="+1 CON"];
 
+    bb_hp_base [label = "+6hp"]
     bb_hp_con_1 [label = "+[CON]hp"]
     bb_hp_con_2 [label = "+[CON]hp"]
     bb_hp_con_3 [label = "+[CON]hp"]
@@ -64,12 +73,12 @@ digraph PathofDnD{
   //edges
     human-> "club" -> "greatclub" -> "unarmored defense" ;
 
-    "save: Str" -> bb_skill_1;
+    bb_s_str -> bb_skill_1;
 
-    "unarmored defense" -> "save: Str";
-    "unarmored defense" -> bb_str_1 -> "+6hp";
+    "unarmored defense" -> bb_s_str;
+    "unarmored defense" -> bb_str_1 -> bb_hp_base;
     "unarmored defense" -> "maul" ->bb_rage_1
-    "unarmored defense" -> "battleaxe" -> "shield";
+    "unarmored defense" -> "battleaxe" -> bb_sh;
     "unarmored defense" -> bb_p_survival -> bb_e_survival;
 
     bb_rage_1 -> bb_rd_2 -> "reckless attack";
@@ -78,12 +87,12 @@ digraph PathofDnD{
 
     bb_hp_con_4 -> bb_hp4_2;
 
-    "shield" ->  "light armor";
-    "shield" -> "danger sense";
+    bb_sh ->  bb_la;
+    bb_sh -> "danger sense";
 
-    "+6hp" -> bb_hp_5 -> "reckless attack";
-    "+6hp" -> bb_hp_con_1;
-    "+6hp" -> "skill choice";
+    bb_hp_base -> bb_hp_5 -> "reckless attack";
+    bb_hp_base -> bb_hp_con_1;
+    bb_hp_base -> bb_skill_2;
 
     bb_hp_con_1 -> "danger sense";
 
@@ -97,7 +106,7 @@ digraph PathofDnD{
 
     bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
 
-    bb_con_1 -> "save: Con"
+    bb_con_1 -> bb_s_con
     bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
 
     "totem spirit" -> "spirit seeker";
