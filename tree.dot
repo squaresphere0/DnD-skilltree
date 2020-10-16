@@ -12,6 +12,8 @@ digraph PathofDnD{
 
   node [style = "filled" fillcolor = "#fff9c0";]
 
+  //54 nodes
+
       bb_rage_1[label = "rage +1"];
       bb_rage_2[label = "rage +1"];
       bb_rage_3[label = "rage +1"];
@@ -70,7 +72,7 @@ digraph PathofDnD{
 
       bb_advantage_intimidation [label = "while raging: advantage: intimidation"]
 
-          bb_initiative_1 [label = "+1 initiative"];
+      bb_initiative_1 [label = "+1 initiative"];
 
     //boni
 
@@ -170,6 +172,9 @@ digraph PathofDnD{
   subgraph Druid{
     node [style = "filled" fillcolor = "#c0ffc0";]
     //class Skills
+
+    //53 nodes
+
       "druidic" "circle spells" "combat wild shape"
 
       dr_adv_plants [label = "adv. on saving throws\n against plants"];
@@ -314,6 +319,8 @@ digraph PathofDnD{
 
   subgraph paladin{
     node [style = "filled" fillcolor = "#b0e0ff";]
+
+    //65 nodes
 
     "divine sense" "divine smite" "divine health"
 
