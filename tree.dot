@@ -1,7 +1,7 @@
 digraph PathofDnD{
-  node [penwidth = 1.0, fontsize =8, style = "filled", fillcolor = "#ffffff", color = "0.72,0.4,0.9", shape = "doubleoctagon", fontname = "Arial"];
-  graph [root = "human", overlap = "false", bgcolor = "0.72,0.4,0.3";];
-  edge [arrowhead = none, len=1.2, color = "0.72,0.4,0.9", dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
+  node [penwidth = 1.0, fontsize =8, style = "filled", shape = "doubleoctagon"];
+  graph [root = "human", overlap = "false", stylesheet = "style.css"];
+  edge [arrowhead = none, len=1.2, dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
 
 
 
@@ -10,7 +10,7 @@ digraph PathofDnD{
 
   subgraph Barbarian{
 
-  node [style = "filled" fillcolor = "#fff9c0";]
+  node [style = "filled" class = "barbarian"];
 
   //54 nodes
 
@@ -59,7 +59,7 @@ digraph PathofDnD{
 
 
     subgraph bb_minor{
-    node [penwidth = 0.1, shape = "ellipse"];
+    node [penwidth = 0.1, shape = "ellipse", class ="barbarian minor"];
 
 
       bb_club [label = "proficiency: club"];
@@ -170,7 +170,7 @@ digraph PathofDnD{
          dr_s_wis_1
   */
   subgraph Druid{
-    node [style = "filled" fillcolor = "#c0ffc0";]
+    node [style = "filled" class="druid"]
     //class Skills
 
     //53 nodes
@@ -223,7 +223,7 @@ digraph PathofDnD{
       dr_damageinc_ws [label = "+2 to all wild shape dmg"];
 
     subgraph dr_minor{
-      node [penwidth = 0.1, shape = "ellipse"];
+      node [penwidth = 0.1, shape = "ellipse", class = "druid minor"];
 
       dr_cantrip_1 [label = "choose cantrip"];
       dr_cantrip_2[ label = "choose cantrip"];
@@ -318,7 +318,7 @@ digraph PathofDnD{
   }
 
   subgraph paladin{
-    node [style = "filled" fillcolor = "#b0e0ff";]
+    node [style = "filled" class = "paladin"]
 
     //65 nodes
 
@@ -382,7 +382,7 @@ digraph PathofDnD{
     }
 
     subgraph pa_minor{
-      node [penwidth = 0.1, shape = "ellipse"];
+      node [penwidth = 0.1, shape = "ellipse", class="paladin minor"];
 
       pa_hp_1 [label = "+1hp"];
       pa_hp_2 [label = "+1hp"];

@@ -1,0 +1,35 @@
+.graph ellipse, .graph polygon{
+  fill: #372d4c;
+  stroke-width: 0;
+  stroke: white;
+}
+
+.edge polygon{
+  stroke-width: 1;
+  fill: white;
+}
+
+.node ellipse, .node polygon{
+  stroke-width: 2;
+}
+
+
+g.barbarian polygon{
+  fill:   yellow;
+}
+
+g.paladin polygon{
+  fill: blue;
+}
+
+g.druid polygon{
+  fill: green;
+}
+
+g.minor ellipse{
+  fill: #a79dbc;
+}
+
+g .selected{
+  fill: red !important;
+}

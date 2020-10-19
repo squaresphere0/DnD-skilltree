@@ -18,15 +18,18 @@
              graph.onload = function(){
               var svgDoc = graph.contentDocument;
               console.log(svgDoc);
-              allNodes = svgDoc.querySelectorAll('g.node');
+              allNodes = svgDoc.querySelectorAll('.node polygon');
               console.log(allNodes);
               allNodes.forEach(function(node) {
                 node.addEventListener("click", function() {
-                  if(node.querySelector('polygon')){
-                    node.querySelector('polygon').style.fill = 'white';
-                  }else{
-                    node.querySelector('ellipse').style.fill = 'white';
-                  }
+                  node.classList.toggle("selected");
+                });
+              });
+              allNodes = svgDoc.querySelectorAll('.node ellipse');
+              console.log(allNodes);
+              allNodes.forEach(function(node) {
+                node.addEventListener("click", function() {
+                node.classList.toggle("selected");
                 });
               });
 
