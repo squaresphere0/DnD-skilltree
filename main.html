@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Path of DnD</title>
+    </head>
+
+    <body style="background-color:#372d4c;margin:0px;padding:0px;" >
+
+        <object data="graph.svg" type="image/svg+xml" id="graph" width="900" height="900" ></object>
+        <!-- <iframe id="graph" src="graph.svg" frameborder="0" width="100%" height="100%"></iframe> -->
+        <script type="text/javascript">
+
+
+             var graph = document.getElementById("graph");
+             console.log(graph);
+
+
+             graph.onload = function(){
+              var svgDoc = graph.contentDocument;
+              console.log(svgDoc);
+              allNodes = svgDoc.querySelectorAll('g.node');
+              console.log(allNodes);
+              allNodes.forEach(function(node) {
+                node.addEventListener("click", function() {
+                  if(node.querySelector('polygon')){
+                    node.querySelector('polygon').style.fill = 'white';
+                  }else{
+                    node.querySelector('ellipse').style.fill = 'white';
+                  }
+                });
+              });
+
+               //Do SVG manipulation here, using svgDoc instead of document
+             }
+        </script>
+    </body>
+</html>
