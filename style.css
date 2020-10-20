@@ -39,6 +39,10 @@ g.druid polygon, g.druid ellipse{
   fill: #AAD922;
 }
 
+g.fighter polygon, g.fighter ellipse{
+  fill: #86849A;
+}
+
 g.minor ellipse{
   /* fill: #a79dbc; */
   stroke-width: 1;

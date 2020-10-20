@@ -338,6 +338,122 @@ digraph PathofDnD{
     dr_damageredux_plants_2 -> dr_adv_plants;
   }
 
+  subgraph fighter{
+    node [style = "filled" class = "fighter"]
+
+    fi_la [label = "proficiency: light armor"];
+    fi_ma [label = "proficiency: medium armor"];
+    fi_ha [label = "proficiency: heavy armor"];
+    fi_sh [label = "proficiency: shield"];
+
+    fi_skill_1 [label = "choose skill"];
+    fi_skill_2 [label = "choose skill"];
+
+    fi_dex_1 [label = "+1 DEX"];
+    fi_int_1 [label = "+1 INT"];
+
+    fi_s_con [label = "save CON"];
+
+    fi_hp4_1[label = "+4 hp"];
+    fi_hp4_2[label = "+4 hp"];
+    fi_hp_con_1[label = "+[CON] hp"];
+    fi_hp_con_2[label = "+[CON] hp"];
+
+    fi_hd_d10_1[label = "+1 Hitdice: d10"];
+    fi_hd_d10_2[label = "+1 Hitdice: d10"];
+
+    fi_ss_l1_1[label = "level 1 spellslot"];
+    fi_ss_l1_2[label = "level 1 spellslot"];
+
+
+    fi_fightstyle [label = "choose fighting style"];
+    fi_action_surge [label = "Action Surge"];
+    fi_asecond_wind [label = "Second Wind"];
+    fi_super_dice_1 [label = "+2 superiority dice"];
+    fi_super_dice_2 [label = "+2 superiority dice"];
+    fi_maneuvers [label = "+2 maneuvers"];
+    fi_weapon_bond [label = "Weapon Bond"];
+
+    subgraph fi_minor{
+      node [penwidth = 0.1, shape = "ellipse", class="fighter minor"];
+
+      fi_javelin [label = "+2 Javelin"];
+      fi_short_sword [label = "+2 Short Sword"];
+      fi_long_sword [label = "+2 Long Sword"];
+      fi_great_sword [label = "+2 Great Sword"];
+      fi_rapier [label = "+2 Rapier"];
+      fi_bows [label = "+2 Bows"];
+      fi_crossbow [label = "+2 Crossbows"];
+      fi_spear [label = "+2 Spear"];
+
+      fi_p_acrobatics [label = "+2 acrobatics"];
+      fi_p_athletics [label = "+2 athletics"];
+
+      fi_t_artisan [label = "+2 to artisans tools of choice"];
+
+      fi_hp2_1[label = "+2 hp"];
+      fi_hp2_2[label = "+2 hp"];
+      fi_hp2_3[label = "+2 hp"];
+      fi_hp2_4[label = "+2 hp"];
+      fi_hp2_5[label = "+2 hp"];
+      fi_hp2_6[label = "+2 hp"];
+
+      fi_cantrip_1 [label = "Choose Cantrip"];
+      fi_cantrip_2 [label = "Choose Cantrip"];
+
+      fi_spell_l1_1 [label = "Choose level 1 Spell"];
+
+    }
+    //edges
+
+    human -> fi_javelin -> fi_hp2_1 -> fi_la;
+
+    fi_la -> fi_short_sword -> fi_rapier -> fi_dex_1;
+    fi_la -> fi_hp2_2 -> fi_ma;
+    fi_la -> fi_sh;
+    fi_la -> fi_long_sword -> fi_great_sword -> fi_ha;
+    fi_la -> fi_skill_1;
+
+    fi_dex_1 -> fi_bows -> fi_hd_d10_1;
+    fi_dex_1 -> fi_crossbow -> fi_hd_d10_1;
+
+    fi_hd_d10_1 -> fi_s_con;
+
+    fi_ma -> fi_fightstyle;
+
+    fi_sh -> fi_hp2_3 -> fi_fightstyle;
+
+    fi_ha -> fi_hp2_4 -> fi_hp2_5 -> fi_hd_d10_2;
+
+    fi_hd_d10_2 -> fi_hp_con_2;
+    fi_hd_d10_2 -> fi_hp4_1;
+
+    fi_fightstyle -> fi_p_athletics -> fi_action_surge;
+    fi_fightstyle -> fi_skill_2;
+    fi_fightstyle -> fi_spear -> fi_asecond_wind;
+
+    fi_action_surge -> fi_hp_con_1 -> fi_s_con;
+
+    fi_asecond_wind -> fi_hp2_6 -> fi_hp_con_2;
+
+    fi_hp_con_2 -> fi_cantrip_1 -> fi_ss_l1_1;
+
+    fi_ss_l1_1 -> fi_int_1;
+    fi_ss_l1_1 -> fi_spell_l1_1;
+    fi_ss_l1_1 -> fi_weapon_bond;
+    fi_ss_l1_1 -> fi_ss_l1_2;
+
+    fi_ss_l1_2 -> fi_cantrip_2;
+
+    fi_s_con -> fi_t_artisan;
+    fi_s_con -> fi_super_dice_1;
+
+    fi_super_dice_1 -> fi_maneuvers;
+
+    fi_maneuvers -> fi_super_dice_2;
+  }
+
+
   subgraph paladin{
     node [style = "filled" class = "paladin"]
 
@@ -560,7 +676,4 @@ digraph PathofDnD{
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
 
-  //Druid -- Paladin
-  dr_p_medicine  -> pa_hp_base [arrowtail = "normal"];
-  "combat wild shape" -> pa_ss_l1_5;
 }
