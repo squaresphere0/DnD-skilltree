@@ -52,6 +52,11 @@ digraph PathofDnD{
     bb_hp4_1 [label = "+4hp"]
     bb_hp4_2 [label = "+4hp"]
 
+    bb_hd_d12_1 [label = "+1 Hitdice: d12"];
+    bb_hd_d12_2 [label = "+1 Hitdice: d12"];
+    bb_hd_d12_3 [label = "+1 Hitdice: d12"];
+    bb_hd_d12_4 [label = "+1 Hitdice: d12"];
+
     bb_feat_greatweapon_bludgeon [label = "Feature:\nGreatweapon Master \nfor bludgeoning weapons"];
 
     bb_advantage_beast [label = "advantage on\n saving throws\n against beasts"]
@@ -103,11 +108,16 @@ digraph PathofDnD{
     bb_s_str -> bb_skill_1;
     bb_s_str -> bb_rage_3;
 
+    bb_skill_1 -> bb_hd_d12_3;
+
     bb_uadefense-> bb_hp_6 -> bb_s_str;
-    bb_uadefense-> bb_str_1 -> bb_hp_base;
+    bb_uadefense-> bb_str_1;
     bb_uadefense-> bb_maul ->bb_rage_1
     bb_uadefense-> bb_battleaxe -> bb_sh;
     bb_uadefense-> bb_p_survival -> bb_e_survival;
+
+    bb_str_1 -> bb_hp_base;
+    bb_str_1 -> bb_hd_d12_1;
 
     bb_rage_1 -> bb_rd_2 -> bb_reckless;
     bb_rage_1 -> bb_rd_1;
@@ -139,10 +149,12 @@ digraph PathofDnD{
     bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
     bb_hp_con_2 -> bb_ma;
 
-    bb_con_1 -> bb_s_con
+    bb_con_1 -> bb_s_con;
     bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
+    bb_con_1 -> bb_hd_d12_2;
 
     bb_totem_spirit -> bb_spirit_seeker;
+    bb_totem_spirit -> bb_hd_d12_4;
 
     bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation -> bb_recover_rage;
   }
