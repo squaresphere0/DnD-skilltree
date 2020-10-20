@@ -415,6 +415,11 @@ digraph PathofDnD{
       pa_hp2_6 [label = "+2hp"];
       pa_hp2_7 [label = "+2hp"];
 
+      pa_hd_d10_1 [label = "+1 Hitdice: d10"];
+      pa_hd_d10_2 [label = "+1 Hitdice: d10"];
+      pa_hd_d10_3 [label = "+1 Hitdice: d10"];
+      pa_hd_d10_4 [label = "+1 Hitdice: d10"];
+
       pa_skill_1 [label = "choose skill"];
       pa_skill_2 [label = "choose skill"];
 
@@ -468,6 +473,7 @@ digraph PathofDnD{
     "divine sense" -> pa_hp_base;
     "divine sense" -> pa_s_cha;
     "divine sense" -> pa_skill_1;
+    "divine sense" -> pa_hd_d10_1;
 
     pa_hp_base -> pa_hp2_4 -> pa_layonh_1;
 
@@ -482,6 +488,7 @@ digraph PathofDnD{
     pa_s_wis -> pa_ss_l1_2;
 
     pa_s_cha ->pa_ss_l1_3;
+    pa_s_cha -> pa_hd_d10_3;
 
     pa_ss_l1_3 -> pa_ss_l1_1[arrowhead = normal];
     pa_ss_l1_3 -> pa_hp2_3;
@@ -493,7 +500,10 @@ digraph PathofDnD{
     pa_fightstyle -> pa_layonh_2;
     pa_fightstyle -> pa_hp2_5 -> pa_hp_con_2;
 
+    "divine smite" -> pa_hd_d10_2;
+
     pa_hp_con_2 -> pa_hp4_4;
+    pa_hp_con_2 -> pa_hd_d10_4;
 
     pa_ss_l1_1 -> pa_hp_con_1;
 
