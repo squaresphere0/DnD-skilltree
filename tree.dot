@@ -1,7 +1,7 @@
 digraph PathofDnD{
   node [penwidth = 1.0, fontsize =8, style = "filled", shape = "doubleoctagon"];
-  graph [root = "human", overlap = "false", stylesheet = "style.css"];
-  edge [arrowhead = none, len=1.2, dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
+  graph [root = "human", overlap = "false", stylesheet = "style.css", splines = false, start = rand, mode = sgd, maxiter = 5000, model= subset];
+  edge [arrowhead = none, len=100, dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
 
 
 
@@ -473,7 +473,7 @@ digraph PathofDnD{
     pa_ma -> pa_warhammer -> pa_sh;
 
     pa_sh -> pa_fightstyle;
-    pa_sh -> pa_str_1;
+    pa_sh -> pa_layonh_2;
     pa_sh -> pa_glave -> pa_lance ->pa_p_animalhandling -> pa_find_steed;
 
     pa_find_steed -> pa_mount_shield -> pa_feat_mounted;
@@ -510,7 +510,7 @@ digraph PathofDnD{
     pa_ss_l1_1 -> pa_hp_2 -> pa_ss_l1_2;
 
     pa_fightstyle ->pa_hp_1 -> "divine smite";
-    pa_fightstyle -> pa_layonh_2;
+    pa_fightstyle -> pa_str_1;
     pa_fightstyle -> pa_hp2_5 -> pa_hp_con_2;
 
     "divine smite" -> pa_hd_d10_2;
