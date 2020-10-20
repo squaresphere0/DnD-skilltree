@@ -390,16 +390,25 @@ digraph PathofDnD{
       pa_an_spell_ensnaringstrike [label = "oath spell: ensnaring strike"];
       pa_an_spell_speakwani [label = "oath spell: speak with animals"];
 
+      pa_an_cd_turn [label = "Channel Divinity: Turn the Faithless"];
+      pa_an_cd_nature [label = "Channel Divinity: Natures Wrath"];
+
     }
 
     subgraph pa_oath_devotion{
       pa_de_spell_pfromeng [label = "oath spell: protection from evil and good"];
       pa_de_spell_sanctuary [label = "oath spell: sanctuary"];
+
+      pa_de_cd_sacred [label = "Channel Divinity: Sacred Weapon"];
+      pa_de_cd_turn [label = "Channel Divinity: Turn the Unholy"];
     }
 
     subgraph pa_oath_vengance{
     pa_ve_spell_huntersm [label = "oath spell: hunters mark"];
     pa_ve_spell_bane [label = "oath spell: bane"];
+
+    pa_ve_cd_abjure [label = "Channel Divinity: Abjure Enemy"];
+    pa_ve_cd_vow [label = "Channel Divinity: Vow of Enmity"];
 
     }
 
@@ -523,14 +532,14 @@ digraph PathofDnD{
 
     "divine health" -> pa_layonh_3;
 
-    pa_an_spell_speakwani -> pa_hp4_1;
-    pa_an_spell_ensnaringstrike -> pa_hp4_1;
+    pa_an_spell_speakwani -> pa_an_cd_nature -> pa_hp4_1;
+    pa_an_spell_ensnaringstrike -> pa_an_cd_turn -> pa_hp4_1;
 
-    pa_de_spell_pfromeng -> pa_hp4_2;
-    pa_de_spell_sanctuary -> pa_hp4_2;
+    pa_de_spell_pfromeng -> pa_de_cd_turn -> pa_hp4_2;
+    pa_de_spell_sanctuary -> pa_de_cd_sacred -> pa_hp4_2;
 
-    pa_ve_spell_bane -> pa_hp4_3;
-    pa_ve_spell_huntersm -> pa_hp4_3;
+    pa_ve_spell_bane -> pa_ve_cd_vow -> pa_hp4_3;
+    pa_ve_spell_huntersm -> pa_ve_cd_abjure -> pa_hp4_3;
 
     pa_hp4_1 -> pa_cha_1 [arrowhead = "normal"];
     pa_hp4_1 -> pa_str_2 [arrowhead = "normal"];
