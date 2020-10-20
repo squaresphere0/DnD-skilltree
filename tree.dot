@@ -382,6 +382,7 @@ digraph PathofDnD{
 
     pa_hand_less_somantic [label = "perform somantic \nwhile wielding \nweapons or shield"];
     pa_find_steed [label = "once a day: \nfind steed"];
+    pa_one_of_them [label = "one of them"];
 
 
 
@@ -470,6 +471,9 @@ digraph PathofDnD{
 
     pa_str_1 -> pa_hp2_6 -> pa_hp2_7 ->pa_ha;
 
+    pa_layonh_3 -> pa_ha;
+    pa_layonh_3 -> pa_hp4_4;
+
     "divine sense" -> pa_hp_base;
     "divine sense" -> pa_s_cha;
     "divine sense" -> pa_skill_1;
@@ -534,6 +538,9 @@ digraph PathofDnD{
     pa_hp4_2 -> pa_str_2 [arrowhead = "normal"];
 
     pa_hp4_3 -> pa_cha_1 [arrowhead = "normal"];
+
+    pa_one_of_them -> pa_cha_1;
+    pa_one_of_them -> pa_str_2;
 
   }
 
