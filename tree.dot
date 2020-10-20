@@ -33,12 +33,11 @@ digraph PathofDnD{
     bb_s_str [label = "save STR"];
 
     bb_sh [label = "proficiency: shield"];
-    bb_la[label = "profociency: light armor"];
-    bb_ma[label = "profociency: medium armor"];
+    bb_la[label = "proficiency: light armor"];
+    bb_ma[label = "proficiency: medium armor"];
 
     bb_skill_1[label = "choose skill"];
     bb_skill_2[label = "choose skill"];
-    bb_e_survival[label = "expertise: survival"];
 
     bb_con_1 [label="+1 CON"];
     bb_dex_1 [label="+1 DEX"];
@@ -67,13 +66,14 @@ digraph PathofDnD{
     node [penwidth = 0.1, shape = "ellipse", class ="barbarian minor"];
 
 
-      bb_club [label = "proficiency: club"];
-      bb_greatclub [label = "proficiency: greatclub"];
-      bb_battleaxe [label = "proficiency: battleaxe"];
-      bb_maul [label = "proficiency: maul"];
+      bb_club [label = "+2 club"];
+      bb_greatclub [label = "+2 greatclub"];
+      bb_battleaxe [label = "+2 battleaxe"];
+      bb_maul [label = "+2 maul"];
 
-      bb_p_survival[label = "proficiency: survival"];
-      bb_p_intimidation[label = "proficiency: intimidation"]
+      bb_p_survival_1[label = "+2 survival"];
+      bb_p_survival_2[label = "+2 survival"];
+      bb_p_intimidation[label = "+2 intimidation"]
 
       bb_advantage_intimidation [label = "while raging: advantage: intimidation"]
 
@@ -114,7 +114,7 @@ digraph PathofDnD{
     bb_uadefense-> bb_str_1;
     bb_uadefense-> bb_maul ->bb_rage_1
     bb_uadefense-> bb_battleaxe -> bb_sh;
-    bb_uadefense-> bb_p_survival -> bb_e_survival;
+    bb_uadefense-> bb_p_survival_1 -> bb_p_survival_2;
 
     bb_str_1 -> bb_hp_base;
     bb_str_1 -> bb_hd_d12_1;
@@ -194,9 +194,9 @@ digraph PathofDnD{
       dr_s_int [label = "save INT"];
       dr_s_wis [label = "save WIS"];
 
-      dr_e_nature [label = "expertise: nature"];
-
       dr_wis1_1 [label = "+1 Wis"];
+
+      dr_e_nature [label = "+3 nature"];
 
       dr_ss_l1_1 [label = "level 1 spellslot"];
       dr_ss_l1_2 [label = "level 1 spellslot"];
@@ -216,9 +216,9 @@ digraph PathofDnD{
       dr_feat_wanderer [label = "Feature: Wanderer"];
 
     //proficiencies
-      dr_p_la [label = "prof: light armor"];
-      dr_p_sh [label= "prof: shield"];
-      dr_p_herbalismkit [label = "prof: herbalism kit"];
+      dr_p_la [label = "proficiency: light armor"];
+      dr_p_sh [label= "proficiency: shield"];
+      dr_p_herbalismkit [label = "proficiency: herbalism kit"];
 
     //hp
       dr_hp4_1 [label = "+4hp"];
@@ -232,9 +232,9 @@ digraph PathofDnD{
 
       dr_natureHealer [label = "1/day, while in nature,\n restore 1d8 to 6 creatures\n during a short rest"];
 
-      dr_conHp_1 [label = "+[CON] hp"];
-      dr_conHp_2 [label = "+[CON] hp"];
-      dr_conHp_3 [label = "+[CON] hp"];
+      dr_hp_con_1 [label = "+[CON] hp"];
+      dr_hp_con_2 [label = "+[CON] hp"];
+      dr_hp_con_3 [label = "+[CON] hp"];
 
     //damage changes
       dr_damageinc_ws [label = "+2 to all wild shape dmg"];
@@ -248,18 +248,18 @@ digraph PathofDnD{
 
       dr_skill_1 [label = "choose skill"];
       dr_skill_2 [label = "choose skill"];
-      dr_p_nature [label = "proficiency: nature"];
-      dr_p_medicine [label = "proficiency: medicine"];
-      dr_p_arcana [label = "proficiency: arcana"];
+      dr_p_nature_1 [label = "+2 nature"];
+      dr_p_medicine [label = "+2 medicine"];
+      dr_p_arcana [label = "+2 arcana"];
 
       dr_l_primordial [label = "language: primordial"]
 
-      dr_p_club [label="prof: club"];
-      dr_p_sickle [label="prof: sickle"];
-      dr_p_dart [label="prof: dart"];
-      dr_p_sling [label="prof: sling"];
-      dr_p_quarterstaff [label="prof: quarterstaff"];
-      dr_p_javelin [label="prof: javelin"];
+      dr_p_club [label="+2 club"];
+      dr_p_sickle [label="+2 sickle"];
+      dr_p_dart [label="+2 dart"];
+      dr_p_sling [label="+2 sling"];
+      dr_p_quarterstaff [label="+2 quarterstaff"];
+      dr_p_javelin [label="+2 javelin"];
       dr_p_shillelagh [label = "Shillelagh"];
 
       dr_hp2_1 [label = "+2hp"];
@@ -277,7 +277,7 @@ digraph PathofDnD{
     human -> dr_p_sickle -> dr_hp2_5 -> dr_p_herbalismkit;
 
     dr_p_herbalismkit -> dr_p_la;
-    dr_p_herbalismkit -> dr_skill_1 -> dr_p_nature -> dr_e_nature;
+    dr_p_herbalismkit -> dr_skill_1 -> dr_p_nature_1 -> dr_e_nature;
     dr_p_herbalismkit -> dr_p_medicine;
 
     dr_e_nature -> dr_s_wis[arrowhead = normal];
@@ -289,10 +289,10 @@ digraph PathofDnD{
     dr_p_la -> dr_p_sling -> "druidic";
     dr_p_la -> dr_p_dart -> dr_ws_1;
     dr_p_la -> dr_skill_2;
-    dr_p_la -> dr_conHp_2 -> dr_hp2_4 -> dr_p_sh;
+    dr_p_la -> dr_hp_con_2 -> dr_hp2_4 -> dr_p_sh;
     dr_p_la -> dr_hd_d8_1;
 
-    dr_conHp_2 -> dr_hd_d8_4;
+    dr_hp_con_2 -> dr_hd_d8_4;
 
     "druidic"  -> {dr_ss_l1_1, dr_p_sh, dr_wis1_1};
     "druidic" -> dr_cantrip_2 -> dr_cantrip_3 -> dr_ss_l1_5;
@@ -312,7 +312,7 @@ digraph PathofDnD{
 
     dr_recovery_1 -> dr_ss_l1_5;
     dr_recovery_1 -> "circle spells";
-    dr_recovery_1 -> dr_conHp_3 -> dr_hp4_3;
+    dr_recovery_1 -> dr_hp_con_3 -> dr_hp4_3;
 
     "circle spells" -> dr_ss_l2_3;
 
@@ -321,7 +321,7 @@ digraph PathofDnD{
     dr_ws_1 -> "combat wild shape"
 
     "combat wild shape" -> dr_ss_l1_4;
-    "combat wild shape" -> dr_hp2_2 -> dr_conHp_1 -> dr_hp4_1;
+    "combat wild shape" -> dr_hp2_2 -> dr_hp_con_1 -> dr_hp4_1;
 
     dr_ss_l1_4 -> dr_ws_2;
     dr_ss_l1_3 -> dr_ws_2;
@@ -424,13 +424,13 @@ digraph PathofDnD{
       pa_skill_1 [label = "choose skill"];
       pa_skill_2 [label = "choose skill"];
 
-      pa_p_animalhandling [label = "proficiency: animal handling"];
-      pa_p_religion[label = "proficiency: religion"]
+      pa_p_animalhandling [label = "+2 animal handling"];
+      pa_p_religion[label = "+2 religion"]
 
-      pa_warhammer [label = "proficiency: warhammer"];
-      pa_glave [label = "proficiency: glaive"];
-      pa_mace [label= "proficiency: mace"];
-      pa_lance [label = "proficiency: lance"];
+      pa_warhammer [label = "+2 warhammer"];
+      pa_glave [label = "+2 glaive"];
+      pa_mace [label= "+2 mace"];
+      pa_lance [label = "+2 lance"];
 
       pa_mount_shield [label = "shield AC bonus for mount"];
 
@@ -545,7 +545,7 @@ digraph PathofDnD{
   }
 
   //Barbarian -- Druid
-  bb_e_survival -> dr_feat_wanderer;
+  bb_p_survival_2 -> dr_feat_wanderer;
   bb_advantage_beast -> dr_adv_plants;
 
   //Barbarian -- Paladin
