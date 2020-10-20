@@ -356,8 +356,11 @@ digraph PathofDnD{
 
     fi_hp4_1[label = "+4 hp"];
     fi_hp4_2[label = "+4 hp"];
+    fi_hp4_3[label = "+4 hp"];
+
     fi_hp_con_1[label = "+[CON] hp"];
     fi_hp_con_2[label = "+[CON] hp"];
+    fi_hp_con_3[label = "+[CON] hp"];
 
     fi_hd_d10_1[label = "+1 Hitdice: d10"];
     fi_hd_d10_2[label = "+1 Hitdice: d10"];
@@ -397,6 +400,7 @@ digraph PathofDnD{
       fi_hp2_4[label = "+2 hp"];
       fi_hp2_5[label = "+2 hp"];
       fi_hp2_6[label = "+2 hp"];
+      fi_hp2_7[label = "+2 hp"];
 
       fi_cantrip_1 [label = "Choose Cantrip"];
       fi_cantrip_2 [label = "Choose Cantrip"];
@@ -417,7 +421,7 @@ digraph PathofDnD{
     fi_dex_1 -> fi_bows -> fi_hd_d10_1;
     fi_dex_1 -> fi_crossbow -> fi_hd_d10_1;
 
-    fi_hd_d10_1 -> fi_s_con;
+    fi_hd_d10_1 -> fi_p_acrobatics ->fi_s_con;
 
     fi_ma -> fi_fightstyle;
 
@@ -451,6 +455,7 @@ digraph PathofDnD{
     fi_super_dice_1 -> fi_maneuvers;
 
     fi_maneuvers -> fi_super_dice_2;
+    fi_maneuvers -> fi_hp2_7 -> fi_hp_con_3 -> fi_hp4_3;
   }
 
 
