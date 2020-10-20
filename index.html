@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Path of DnD</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
-    <body style="background-color:#372d4c;margin:0px;padding:0px;" >
+    <body>
 
         <object data="graph.svg" type="image/svg+xml" id="graph" width="900" height="900" ></object>
         <!-- <iframe id="graph" src="graph.svg" frameborder="0" width="100%" height="100%"></iframe> -->
@@ -18,22 +19,13 @@
              graph.onload = function(){
               var svgDoc = graph.contentDocument;
               console.log(svgDoc);
-              allNodes = svgDoc.querySelectorAll('.node polygon');
+              allNodes = svgDoc.querySelectorAll('g.node');
               console.log(allNodes);
               allNodes.forEach(function(node) {
                 node.addEventListener("click", function() {
                   node.classList.toggle("selected");
                 });
               });
-              allNodes = svgDoc.querySelectorAll('.node ellipse');
-              console.log(allNodes);
-              allNodes.forEach(function(node) {
-                node.addEventListener("click", function() {
-                node.classList.toggle("selected");
-                });
-              });
-
-               //Do SVG manipulation here, using svgDoc instead of document
              }
         </script>
     </body>

@@ -1,12 +1,25 @@
 .graph ellipse, .graph polygon{
-  fill: #372d4c;
+  fill: #48483A;
   stroke-width: 0;
-  stroke: white;
+  stroke: #BFBFB0;
+}
+
+body{
+  background-color: #48483A;
+  margin: 0px;
+  padding: 0px;
+}
+
+text{
+  font-family: Optima, Cambria, sans-serif;
+  font-weight: bold;
+  fill: #48483A;
+  /* text-transform: uppercase; */
 }
 
 .edge polygon{
-  stroke-width: 1;
-  fill: white;
+  stroke-width: 0;
+  fill: #BFBFB0;
 }
 
 .node ellipse, .node polygon{
@@ -14,22 +27,27 @@
 }
 
 
-g.barbarian polygon{
-  fill:   yellow;
+g.barbarian polygon, g.barbarian ellipse{
+  fill:   #F28C2C;
 }
 
-g.paladin polygon{
-  fill: blue;
+g.paladin polygon, g.paladin ellipse{
+  fill: #4BA5BE;
 }
 
-g.druid polygon{
-  fill: green;
+g.druid polygon, g.druid ellipse{
+  fill: #AAD922;
 }
 
 g.minor ellipse{
-  fill: #a79dbc;
+  /* fill: #a79dbc; */
+  stroke-width: 1;
 }
 
-g .selected{
-  fill: red !important;
+g.selected polygon, g.selected ellipse{
+  fill: #6C0F1E !important;
+}
+
+g.selected text{
+  fill: #BFBFB0 !important;
 }
