@@ -5,7 +5,7 @@ digraph PathofDnD{
 
 
 
-  "human" [fontsize = 16, penwidth = 2];
+  "human" [fontsize = 16, penwidth = 2, class = "race selected"];
 
 
   subgraph Barbarian{
