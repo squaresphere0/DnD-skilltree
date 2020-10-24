@@ -1,7 +1,7 @@
 digraph PathofDnD{
   node [penwidth = 1.0, fontsize =8, style = "filled", shape = "doubleoctagon"];
   graph [root = "human", overlap = "false", stylesheet = "style.css", splines = false, start = rand, mode = sgd, maxiter = 5000, model= subset];
-  edge [arrowhead = none, len=100, dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 0.5];
+  edge [arrowhead = none, len=100, dir = "both", arrowtail = none, style = tapered, penwidth= 3, arrowsize = 1];
 
 
 
