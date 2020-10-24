@@ -1,0 +1,22 @@
+//Download current branch as zip, extract it
+//open PowerShell  (use TAB to autocomplete)
+
+python --version //check python version
+
+
+//Windows
+//if nothing: python not yet installed:
+python
+//opened window in Microsoft Store download Python 3.8 (60MB)
+//check again: python --version
+
+
+//go into extracted folder
+cd C:Users\~username\Downloads\~extractedfoldername
+//from here host local server on default port 8000
+python3 -m http.server //optional to add 8000 or another port number
+
+go to Browser type : localhost:8000
+
+stop: in PowerShell: ctrl + c + c
+you can stop and still have the (working) webpage as long as you don't reload it
