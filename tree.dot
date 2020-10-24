@@ -373,7 +373,7 @@ digraph PathofDnD{
 
     fi_fightstyle [label = "choose fighting style"];
     fi_action_surge [label = "Action Surge"];
-    fi_asecond_wind [label = "Second Wind"];
+    fi_second_wind [label = "Second Wind"];
     fi_super_dice_1 [label = "+2 superiority dice"];
     fi_super_dice_2 [label = "+2 superiority dice"];
     fi_maneuvers [label = "+2 maneuvers"];
@@ -442,25 +442,38 @@ digraph PathofDnD{
 
     fi_dex_1 -> fi_bows -> fi_hd_d10_1;
     fi_dex_1 -> fi_crossbow -> fi_hd_d10_1;
+    fi_dex_1 -> fi_hp_con_4;
 
     fi_hd_d10_1 -> fi_p_acrobatics ->fi_s_con;
 
     fi_ma -> fi_fightstyle;
+    fi_ma -> fi_hp_con_4;
 
     fi_sh -> fi_hp2_3 -> fi_fightstyle;
 
     fi_ha -> fi_hp2_4 -> fi_hp2_5 -> fi_hd_d10_2;
+    fi_ha -> fi_hp_2 -> fi_damageredux_heavy;
+
+    fi_damageredux_heavy -> fi_hp_3 ->fi_second_wind;
 
     fi_hd_d10_2 -> fi_hp_con_2;
     fi_hd_d10_2 -> fi_hp4_1;
 
+    fi_hp4_1 -> fi_ss_l1_3;
+
+    fi_ss_l1_3 -> fi_spell_l1_2 -> fi_int_1;
+
     fi_fightstyle -> fi_p_athletics -> fi_action_surge;
     fi_fightstyle -> fi_skill_2;
-    fi_fightstyle -> fi_spear -> fi_asecond_wind;
+    fi_fightstyle -> fi_spear -> fi_second_wind;
+    fi_fightstyle -> fi_hp_1 -> fi_great_sword_2 -> fi_crit_19;
+
+    fi_crit_19 -> fi_trident_1 -> fi_net_1 -> fi_dc_net -> fi_wield_net_trident;
+    fi_crit_19 -> fi_p_intimidation -> fi_l_orcish;
 
     fi_action_surge -> fi_hp_con_1 -> fi_s_con;
 
-    fi_asecond_wind -> fi_hp2_6 -> fi_hp_con_2;
+    fi_second_wind -> fi_hp2_6 -> fi_hp_con_2;
 
     fi_hp_con_2 -> fi_cantrip_1 -> fi_ss_l1_1;
 
@@ -473,6 +486,9 @@ digraph PathofDnD{
 
     fi_s_con -> fi_t_artisan;
     fi_s_con -> fi_super_dice_1;
+    fi_s_con -> fi_hp_con_4;
+
+    fi_t_artisan -> fi_p_smithing;
 
     fi_super_dice_1 -> fi_maneuvers;
 
@@ -696,11 +712,13 @@ digraph PathofDnD{
 
   }
 
-  //Barbarian -- Druid
+  //Druid -- Barbarian
   bb_p_survival_2 -> dr_feat_wanderer;
   bb_advantage_beast -> dr_adv_plants;
 
   //Barbarian -- Paladin
   bb_hp_con_3 -> pa_sh;
 
+  //Paladin -- Fighter
+  fi_ha -> fi_warpick_1 -> pa_cha_2;
 }
