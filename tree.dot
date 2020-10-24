@@ -361,12 +361,14 @@ digraph PathofDnD{
     fi_hp_con_1[label = "+[CON] hp"];
     fi_hp_con_2[label = "+[CON] hp"];
     fi_hp_con_3[label = "+[CON] hp"];
+    fi_hp_con_4[label = "+[CON] hp"];
 
     fi_hd_d10_1[label = "+1 Hitdice: d10"];
     fi_hd_d10_2[label = "+1 Hitdice: d10"];
 
     fi_ss_l1_1[label = "level 1 spellslot"];
     fi_ss_l1_2[label = "level 1 spellslot"];
+    fi_ss_l1_3[label = "level 1 spellslot"];
 
 
     fi_fightstyle [label = "choose fighting style"];
@@ -376,6 +378,11 @@ digraph PathofDnD{
     fi_super_dice_2 [label = "+2 superiority dice"];
     fi_maneuvers [label = "+2 maneuvers"];
     fi_weapon_bond [label = "Weapon Bond"];
+    fi_crit_19[label = "crit on 19"];
+
+    fi_wield_net_trident [label = "dualwield:\nNet & Trident"];
+    fi_damageredux_heavy[label = "-2 damage taken when\n wearing heavy armour"];
+
 
     subgraph fi_minor{
       node [penwidth = 0.1, shape = "ellipse", class="fighter minor"];
@@ -383,17 +390,30 @@ digraph PathofDnD{
       fi_javelin [label = "+2 Javelin"];
       fi_short_sword [label = "+2 Short Sword"];
       fi_long_sword [label = "+2 Long Sword"];
-      fi_great_sword [label = "+2 Great Sword"];
+      fi_great_sword_1 [label = "+2 Great Sword"];
+      fi_great_sword_2 [label = "+2 Great Sword"];
+      fi_trident_1 [label = "+2 Trident"];
+      fi_warpick_1 [label = "+2 Warpick"];
+      fi_net_1 [label = "+2 Net"];
       fi_rapier [label = "+2 Rapier"];
       fi_bows [label = "+2 Bows"];
       fi_crossbow [label = "+2 Crossbows"];
       fi_spear [label = "+2 Spear"];
 
+      fi_dc_net[label = "+5 Net DC"];
+
       fi_p_acrobatics [label = "+2 acrobatics"];
       fi_p_athletics [label = "+2 athletics"];
+      fi_p_intimidation[label = "+2 intimidation"];
+      fi_p_smithing[label = "+2 smithing"];
 
       fi_t_artisan [label = "+2 to artisans tools of choice"];
 
+      fi_l_orcish[label = "language: orcish"];
+
+      fi_hp_1[label = "+1 hp"];
+      fi_hp_2[label = "+1 hp"];
+      fi_hp_3[label = "+1 hp"];
       fi_hp2_1[label = "+2 hp"];
       fi_hp2_2[label = "+2 hp"];
       fi_hp2_3[label = "+2 hp"];
@@ -406,6 +426,8 @@ digraph PathofDnD{
       fi_cantrip_2 [label = "Choose Cantrip"];
 
       fi_spell_l1_1 [label = "Choose level 1 Spell"];
+      fi_spell_l1_2 [label = "Choose level 1 Spell"];
+
 
     }
     //edges
@@ -415,7 +437,7 @@ digraph PathofDnD{
     fi_la -> fi_short_sword -> fi_rapier -> fi_dex_1;
     fi_la -> fi_hp2_2 -> fi_ma;
     fi_la -> fi_sh;
-    fi_la -> fi_long_sword -> fi_great_sword -> fi_ha;
+    fi_la -> fi_long_sword -> fi_great_sword_1 -> fi_ha;
     fi_la -> fi_skill_1;
 
     fi_dex_1 -> fi_bows -> fi_hd_d10_1;

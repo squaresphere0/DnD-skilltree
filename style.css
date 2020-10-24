@@ -9,10 +9,29 @@ body{
   margin: 0px;
   padding: 0px;
 }
+.footer{
+  font-family: Optima, Cambria, sans-serif;
+  font-size: 6px;
+  color: #BFBFB0;
+  background-color: #48483A;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-style: solid solid none none;
+  padding: 3px;
+  text-align: center;
+  zoom: normal;
+}
+.footer p{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
 text{
   font-family: Optima, Cambria, sans-serif;
   font-weight: bold;
+  text-transform: capitalize;
   fill: #48483A;
   /* text-transform: uppercase; */
 }
@@ -26,6 +45,9 @@ text{
   stroke-width: 2;
 }
 
+g.race polygon{
+  fill: #BFBFB0;
+}
 
 g.barbarian polygon, g.barbarian ellipse{
   fill:   #F28C2C;
