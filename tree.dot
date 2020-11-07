@@ -12,52 +12,52 @@ digraph PathofDnD{
 
   node [style = "filled" class = "barbarian"];
 
-  //54 nodes
+  //level 1
 
       bb_rage_1[label = "rage +1"];
       bb_rage_2[label = "rage +1"];
-      bb_rage_3[label = "rage +1"];
-
       bb_uadefense [label = "unarmored defense" ];
+      bb_s_con [label = "save CON"];
+      bb_s_str [label = "save STR"];
+      bb_hp_base_1 [label = "+6hp"];
+      bb_hp_con_1 [label = "+[CON]hp"]
+      bb_hd_d12_1 [label = "+1 Hitdice: d12"];
+      bb_sh [label = "proficiency: shield"];
+      bb_la[label = "proficiency: light armor"];
+      bb_ma[label = "proficiency: medium armor"];
+
+
+
+//level 2
       bb_reckless [label = "reckless attack"];
       bb_danger_sense[label = "danger sense"];
+      bb_hd_d12_2 [label = "+1 Hitdice: d12"];
+      bb_hp_con_2 [label = "+[CON]hp"];
+      bb_hp_base_2 [label = "+6hp"]
 
+//level 3
+      bb_hd_d12_3 [label = "+1 Hitdice: d12"];
+      bb_rage_3[label = "rage +1"];
+      bb_hp_con_3 [label = "+[CON]hp"];
+      bb_hp_base_3 [label = "+4hp"]
+  //Path Berserker
       bb_frenzy[label = "frenzy"];
+  //Path Totem Warrior
       bb_spirit_seeker [label = "spirit seeker"];
       bb_totem_spirit [label = "totem spirit"]
 
-  //proficiencies
 
 
-    bb_s_con [label = "save CON"];
-    bb_s_str [label = "save STR"];
-
-    bb_sh [label = "proficiency: shield"];
-    bb_la[label = "proficiency: light armor"];
-    bb_ma[label = "proficiency: medium armor"];
-
-    bb_skill_1[label = "choose skill"];
-    bb_skill_2[label = "choose skill"];
+  //leftovers
 
     bb_con_1 [label="+1 CON"];
     bb_dex_1 [label="+1 DEX"];
     bb_str_1 [label="+1 STR"];
 
-    bb_hp_base [label = "+6hp"]
-    bb_hp_con_1 [label = "+[CON]hp"]
-    bb_hp_con_2 [label = "+[CON]hp"]
-    bb_hp_con_3 [label = "+[CON]hp"]
     bb_hp_con_4 [label = "+[CON]hp"]
-    bb_hp4_1 [label = "+4hp"]
-    bb_hp4_2 [label = "+4hp"]
-
-    bb_hd_d12_1 [label = "+1 Hitdice: d12"];
-    bb_hd_d12_2 [label = "+1 Hitdice: d12"];
-    bb_hd_d12_3 [label = "+1 Hitdice: d12"];
     bb_hd_d12_4 [label = "+1 Hitdice: d12"];
 
     bb_feat_greatweapon_bludgeon [label = "Feature:\nGreatweapon Master \nfor bludgeoning weapons"];
-
     bb_advantage_beast [label = "advantage on\n saving throws\n against beasts"]
     bb_recover_rage [label = "once a day:\n recover 1 rage\n on a short rest"]
 
@@ -89,9 +89,9 @@ digraph PathofDnD{
       bb_hp_4 [label="+1hp"]
       bb_hp_5 [label="+1hp"]
       bb_hp_6 [label="+1hp"]
-      bb_hp2_1 [label = "+2hp"]
-      bb_hp2_2 [label = "+2hp"]
-      bb_hp2_3 [label = "+2hp"]
+      bb_hp_7 [label="+1hp"]
+      bb_hp_8 [label="+1hp"]
+      bb_hp_9 [label="+1hp"]
 
       bb_damageredux_slashing_1 [label = "-2 slashing damage taken"]
       bb_damageredux_beast_1 [label = "-2 damage taken from beasts"]
@@ -103,60 +103,36 @@ digraph PathofDnD{
     }
 
   //edges
-    human-> bb_club -> bb_greatclub-> bb_uadefense;
+    //level 1
+    human -> bb_uadefense[label = "5"];
 
-    bb_s_str -> bb_skill_1;
-    bb_s_str -> bb_rage_3;
+    bb_uadefense -> bb_hp_base_1;
+    bb_uadefense -> bb_ma;
 
-    bb_skill_1 -> bb_hd_d12_3;
+    bb_ma -> bb_la;
+    bb_ma -> bb_sh;
 
-    bb_uadefense-> bb_hp_6 -> bb_s_str;
-    bb_uadefense-> bb_str_1;
-    bb_uadefense-> bb_maul ->bb_rage_1
-    bb_uadefense-> bb_battleaxe -> bb_sh;
-    bb_uadefense-> bb_p_survival_1 -> bb_p_survival_2;
+    bb_sh -> bb_s_con;
 
-    bb_str_1 -> bb_hp_base;
-    bb_str_1 -> bb_hd_d12_1;
+    bb_hp_base_1 -> bb_hd_d12_1;
+    bb_hp_base_1 -> bb_hp_con_1;
 
-    bb_rage_1 -> bb_rd_2 -> bb_reckless;
-    bb_rage_1 -> bb_rd_1;
-    bb_rage_1 -> bb_hp_con_4;
+    bb_hd_d12_1 -> bb_rage_1;
 
-    bb_hp_con_4 -> bb_hp4_2;
+    bb_rage_1 -> bb_rage_2;
+    bb_rage_1 -> bb_s_str;
 
-    bb_hp4_2 -> bb_damageredux_beast_1 -> bb_damageredux_beast_2 -> bb_advantage_beast;
+    bb_s_con -> bb_s_str;
 
-    bb_sh ->  bb_la;
-    bb_sh -> bb_danger_sense;
+    //level 2
 
-    bb_hp_base -> bb_hp_5 -> bb_reckless;
-    bb_hp_base -> bb_hp_con_1;
-    bb_hp_base -> bb_skill_2;
+    bb_reckless [label = "reckless attack"];
+    bb_danger_sense[label = "danger sense"];
+    bb_hd_d12_2 [label = "+1 Hitdice: d12"];
+    bb_hp_con_2 [label = "+[CON]hp"];
+    bb_hp_base_2 [label = "+6hp"]
 
-    bb_hp_con_1 -> bb_danger_sense;
-    bb_hp_con_1 -> bb_rage_2;
 
-    bb_reckless -> bb_hp_1 -> bb_frenzy;
-    bb_reckless -> bb_hp_3 -> bb_con_1;
-    bb_reckless -> bb_damageinc_bludgeoning_1 -> bb_critinc_damage_bludgeoning -> bb_feat_greatweapon_bludgeon;
-
-    bb_danger_sense -> bb_hp_2 -> bb_totem_spirit;
-    bb_danger_sense -> bb_hp_4 -> bb_con_1;
-    bb_danger_sense -> bb_hp2_1 -> bb_hp_con_2;
-    bb_danger_sense -> bb_initiative_1 -> bb_dex_1;
-
-    bb_hp_con_2 -> bb_damageredux_slashing_1 -> bb_hp_con_3;
-    bb_hp_con_2 -> bb_ma;
-
-    bb_con_1 -> bb_s_con;
-    bb_con_1 -> bb_hp2_2 ->bb_hp2_3 -> bb_hp4_1;
-    bb_con_1 -> bb_hd_d12_2;
-
-    bb_totem_spirit -> bb_spirit_seeker;
-    bb_totem_spirit -> bb_hd_d12_4;
-
-    bb_frenzy -> bb_p_intimidation ->bb_advantage_intimidation -> bb_recover_rage;
   }
 
 
@@ -180,7 +156,7 @@ digraph PathofDnD{
 
     e.g. dr_hp2_1
          dr_s_wis_1
-  */
+  */ /*
   subgraph Druid{
     node [style = "filled" class="druid"]
     //class Skills
@@ -710,8 +686,8 @@ digraph PathofDnD{
     pa_one_of_them -> pa_cha_1;
     pa_one_of_them -> pa_str_2;
 
-  }
-
+  } */
+/*
   //Druid -- Barbarian
   bb_p_survival_2 -> dr_feat_wanderer;
   bb_advantage_beast -> dr_adv_plants;
@@ -720,5 +696,5 @@ digraph PathofDnD{
   bb_hp_con_3 -> pa_sh;
 
   //Paladin -- Fighter
-  fi_ha -> fi_warpick_1 -> pa_cha_2;
+  fi_ha -> fi_warpick_1 -> pa_cha_2; */
 }
